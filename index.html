@@ -84,10 +84,47 @@
       .products-grid {
         grid-template-columns: repeat(3, 1fr) !important;
       }
+      /* Ajustar filtros de categoría en desktop: permitir wrap en múltiples filas */
+      #categoryFiltersContainer {
+        flex-wrap: wrap !important;
+        overflow-x: visible !important;
+        padding-bottom: 1rem !important;
+      }
+      #categoryFiltersContainer > div {
+        flex-shrink: 0;
+      }
       /* Ajustar carrusel en desktop */
       .hero-carousel {
         max-width: 100%;
-        justify-content: center;
+        justify-content: flex-start;
+        overflow-x: auto !important;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(181, 53, 44, 0.3) transparent;
+        padding-bottom: 0.5rem;
+      }
+      .hero-carousel::-webkit-scrollbar {
+        height: 8px;
+      }
+      .hero-carousel::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0.05);
+        border-radius: 4px;
+      }
+      .hero-carousel::-webkit-scrollbar-thumb {
+        background-color: rgba(181, 53, 44, 0.4);
+        border-radius: 4px;
+      }
+      .hero-carousel::-webkit-scrollbar-thumb:hover {
+        background-color: rgba(181, 53, 44, 0.6);
+      }
+      /* Ajustar contenedor interno del carrusel en desktop */
+      .hero-carousel > div {
+        gap: 1rem;
+      }
+      /* Ajustar slides del carrusel en desktop: mostrar 2 slides visibles */
+      .hero-slide {
+        min-width: calc(50% - 0.5rem) !important;
+        max-width: calc(50% - 0.5rem) !important;
+        flex: 0 0 calc(50% - 0.5rem) !important;
       }
       /* Footer fijo adaptado */
       .fixed-bottom-desktop {
@@ -208,19 +245,19 @@
 </nav>
 <!-- Carousel / Hero Section -->
 <div class="mt-4">
-<div class="flex overflow-x-auto no-scrollbar snap-x snap-mandatory hero-carousel">
-<div class="flex items-stretch px-4 gap-4">
+<div class="flex overflow-x-auto snap-x snap-mandatory hero-carousel">
+<div class="flex items-stretch px-4 gap-4 w-full lg:w-auto">
 <!-- Slide 1 -->
-<div class="snap-center flex h-full flex-1 flex-col gap-4 rounded-xl min-w-[320px] relative group">
-<div class="w-full aspect-[16/9] bg-center bg-no-repeat bg-cover rounded-xl flex flex-col justify-end p-5 overflow-hidden shadow-lg border border-gray-100 dark:border-gray-800" data-alt="Gourmet fusion sushi burger with salmon" style='background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.7)), url("https://lh3.googleusercontent.com/aida-public/AB6AXuCqfEnit-ZAxpBT6hvgCqJxrTAR3QELR33zx2DLUSUpGsgZ0tdRp1U7Y6h214yNoo72AMRr8Of33oQmdn0OE3ql1fX9eQ5dK9amEa80RjVm8DiHYgvi4OWU23X-d_TreoYppbczjbxKflTrNdB-MG-iiaWjNfhrRriqQ0xAbgH-jSLIfwiUfwINH20GKBR8c267oer2Zz0cbB7BWQFQ5ZCpiWl-NOpIO1KC8cqwlA_ic1GWycukid4vSMfOxAorAhf42GcCUCWr9gMr");'>
+<div class="snap-center flex h-full flex-col gap-4 rounded-xl min-w-[320px] hero-slide relative group">
+<div onclick="router.navigate('menu'); setTimeout(() => filterByCategory('promociones'), 100);" class="w-full aspect-[16/9] bg-center bg-no-repeat bg-cover rounded-xl flex flex-col justify-end p-5 overflow-hidden shadow-lg border border-gray-100 dark:border-gray-800 cursor-pointer hover:scale-[1.02] transition-transform" data-alt="Promociones especiales" id="promoHeroSlide" style='background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.7)), url("https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=800&q=80");'>
 <div class="bg-primary text-white text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded w-fit mb-2">Promoción</div>
 <h3 class="text-white text-2xl font-bold leading-tight">Speed 1: 20% Descuento</h3>
 <p class="text-gray-200 text-sm font-normal">Exclusivo primera orden en app</p>
 </div>
 </div>
 <!-- Slide 2 -->
-<div class="snap-center flex h-full flex-1 flex-col gap-4 rounded-xl min-w-[320px] relative group">
-<div class="w-full aspect-[16/9] bg-center bg-no-repeat bg-cover rounded-xl flex flex-col justify-end p-5 overflow-hidden shadow-lg border border-gray-100 dark:border-gray-800" data-alt="Assorted premium handrolls on a tray" style='background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.7)), url("https://lh3.googleusercontent.com/aida-public/AB6AXuCCq6Wl5L6ih_SYenl7cnJq4DBo8k8bhY7fRouHzFye_ey8i1QhlvHShgufsCn6ljTmUPGbXi_eU_4ElA3i-jYPzzO7-FTCLDDFP0YslWK5Yj6z7JXWMpjyPFJNTqNwkdU-ItaAjY8h9JsEdHq9LBpH-dhKtra5NbYes3Sj3RhAl636wpSvZeTm3VTHnuxZ6lOSfL5OGNmCJ7eM2_a83amhRbhf6hTbiqKQKrw2hkJI7UO9nC9JQmoKqBvXgEpAYyUAGjCwH8nVjuwO");'>
+<div class="snap-center flex h-full flex-col gap-4 rounded-xl min-w-[320px] hero-slide relative group">
+<div onclick="router.navigate('menu'); setTimeout(() => filterByCategory('Gohan'), 100);" class="w-full aspect-[16/9] bg-center bg-no-repeat bg-cover rounded-xl flex flex-col justify-end p-5 overflow-hidden shadow-lg border border-gray-100 dark:border-gray-800 cursor-pointer hover:scale-[1.02] transition-transform" data-alt="La Serie Gohan" style='background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.7)), url("https://lh3.googleusercontent.com/aida-public/AB6AXuCCq6Wl5L6ih_SYenl7cnJq4DBo8k8bhY7fRouHzFye_ey8i1QhlvHShgufsCn6ljTmUPGbXi_eU_4ElA3i-jYPzzO7-FTCLDDFP0YslWK5Yj6z7JXWMpjyPFJNTqNwkdU-ItaAjY8h9JsEdHq9LBpH-dhKtra5NbYes3Sj3RhAl636wpSvZeTm3VTHnuxZ6lOSfL5OGNmCJ7eM2_a83amhRbhf6hTbiqKQKrw2hkJI7UO9nC9JQmoKqBvXgEpAYyUAGjCwH8nVjuwO");'>
 <div class="bg-accent-green text-white text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded w-fit mb-2">Nuevo</div>
 <h3 class="text-white text-2xl font-bold leading-tight">La Serie Gohan</h3>
 <p class="text-gray-200 text-sm font-normal">Platos frescos para el alma</p>
@@ -235,46 +272,14 @@
 <button onclick="router.navigate('menu')" class="text-primary text-sm font-semibold">Ver Todo</button>
 </div>
 <!-- TextGrid: Categories with Icons -->
-<div class="grid grid-cols-2 md:grid-cols-4 gap-3 px-4">
-<div onclick="router.navigate('menu')" class="flex flex-col gap-3 rounded-2xl border border-gray-100 dark:border-gray-800 bg-white dark:bg-zinc-900 p-4 items-center justify-center text-center shadow-sm hover:border-primary transition-all group cursor-pointer">
-<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full w-16 shrink-0 shadow-md group-hover:scale-105 transition-transform" data-alt="Handroll sushi icon" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBBZA2IkPFLZ-t3HjLgQ2JoEHBCwcvJQInfw7lkQxcSaB16znJzfXs4IycghMX86PlvrKZlF3AGfQOEr7Fn3ER6y9YQ6NiIwAZtsa5bvyQLpSSjHI-M1Ri8HQtyDdFRRwgfPremYJHR38kr-rpYMVT6Qfw5Xn6e2EgXG4GXYKzUCAqn93jtzjp5UNglU0yn_yED8tCY8z87KfuNRhKxPpYUSjtjNFtT7gS-EOIegM-xan-_-Svn4e07EOGnqIg8krKsQ-LrAuGQhqh5");'></div>
-<h2 class="text-[#171212] dark:text-white text-sm font-bold leading-tight">Handrolls</h2>
-</div>
-<div onclick="router.navigate('menu')" class="flex flex-col gap-3 rounded-2xl border border-gray-100 dark:border-gray-800 bg-white dark:bg-zinc-900 p-4 items-center justify-center text-center shadow-sm hover:border-primary transition-all group cursor-pointer">
-<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full w-16 shrink-0 shadow-md group-hover:scale-105 transition-transform" data-alt="Rice bowl gohan icon" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCzrVLXv2hrr_eoQ9oA7YiNrIa7myH4U49AoNSwP6adMIK_AVwLTYtH7_AX3tfyPP_oADprpKokh6g-_sg37LToBVZ8qoAlwjmbHQuV0qMsHcKJ0CDxIUeWPCeJPYj9QKowq-JBAHJRH7lE6Y_Kb4S80dPt45J9cccNF-YDF1ixH-mdm1SOycvZoqcae30jpE3p3IDJiLQDreMeAnTyekZ_uk9IUbEfSUsxsR4LaahDKX20BVbvCdEIGZ-0CpJz-VXsXkj2XsMIbeIP");'></div>
-<h2 class="text-[#171212] dark:text-white text-sm font-bold leading-tight">Gohan</h2>
-</div>
-<div onclick="router.navigate('menu')" class="flex flex-col gap-3 rounded-2xl border border-gray-100 dark:border-gray-800 bg-white dark:bg-zinc-900 p-4 items-center justify-center text-center shadow-sm hover:border-primary transition-all group cursor-pointer">
-<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full w-16 shrink-0 shadow-md group-hover:scale-105 transition-transform" data-alt="Sushi burger fusion icon" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDBDuwlcc1E61ZIFkletpIzaSSjzivhxo1ufjYhgrAr9tXxjU6LIuLvDjLKayaFmvndFxHoKr2PaaeX6Dh8gwrRxOtPgBuaU2s1X2Xe7SmVF7dCx5W-XTS42IqcyAkAee3cNGO4QMqmbkBUr9Y_bfzlVyf908JrKcRmBGXe2M_DOxYWrwtaRMMfnGMPzJ8coA6G_mJB6e_jIf6IzzLPM22e8FG4Q-iP7E3GdnTCwg_SISlFgi4lFExusWLlw1fsDrzEwOXwSNrkWTCj");'></div>
-<h2 class="text-[#171212] dark:text-white text-sm font-bold leading-tight">Sushi Burger</h2>
-</div>
-<div onclick="router.navigate('menu')" class="flex flex-col gap-3 rounded-2xl border border-gray-100 dark:border-gray-800 bg-white dark:bg-zinc-900 p-4 items-center justify-center text-center shadow-sm hover:border-primary transition-all group cursor-pointer">
-<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full w-16 shrink-0 shadow-md group-hover:scale-105 transition-transform" data-alt="Classic sushi rolls icon" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAxLIbuae5t6fKfnEEvaTyes8eAP_q2y8u7l4yxP7kAVSgLdyY7WrgmhpICwK8igVKDZrrNhktOJlSx7e7ITIe5CchoWcMsbNOH0nEbosp92cxMSxyof6K0SAT9Ep0tYAON1Pc3OoeoKIhavU1N08-pKkrBNHAXiM0JLU2g9ojysydH16NOotXyczRtKAv6j_O4-HqyquToiK0JIAvQ34R4jOkH2R66t6QeOVkqwl49Acjf0SHJbuuxYRA_h7Wj_qZxC0MDg4GWfk-S");'></div>
-<h2 class="text-[#171212] dark:text-white text-sm font-bold leading-tight">Signature Rolls</h2>
-</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3 px-4" id="homeCategoriesContainer">
+<!-- Las categorías se generarán dinámicamente desde Firebase -->
 </div>
 <!-- Featured Section: Bento Style -->
 <div class="px-4 py-8">
 <h3 class="text-[#171212] dark:text-white text-lg font-bold leading-tight tracking-tight mb-4">Elección del Chef</h3>
-<div class="grid grid-cols-2 lg:grid-cols-4 grid-rows-2 lg:grid-rows-1 gap-3 h-[400px] lg:h-[300px]">
-<div onclick="router.navigate('product')" class="row-span-2 lg:row-span-1 relative rounded-2xl overflow-hidden shadow-lg bg-zinc-100 dark:bg-zinc-800 cursor-pointer hover:scale-[1.02] transition-transform" data-alt="Large spicy tuna roll dish" style='background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.8)), url("https://lh3.googleusercontent.com/aida-public/AB6AXuDCHVC3OT2hx3DShjLGJZw1ms1IvouJYRI-snxGQE16Co5awGJ6AIwpzlBABQ_srj8PhXb4yqCIYu-VydIv2H9b-a7dQ-5N97FAHtVzSdmqurudCLAcT_Z9VSZycY9gX-4BHUEKtRvZY6WCUAAFmLjIbvuaCFcHLSg0GgStaDLiuE3mEKR18yuV1Fy6FZunDpd9_j_qXK8cQfe7e2Z_OrzYBlVLyzQzUQWd2RA5Xu5DoLlmrQnApvkKAJxX87_k33FnR5pSMSYCamKY"); background-size: cover;'>
-<div class="absolute bottom-4 left-4 right-4">
-<p class="text-white text-xs font-semibold mb-1">Spicy Tuna Max</p>
-<p class="text-primary font-bold">$18.50</p>
-</div>
-</div>
-<div onclick="router.navigate('product')" class="relative rounded-2xl overflow-hidden shadow-lg bg-zinc-100 dark:bg-zinc-800 cursor-pointer hover:scale-[1.02] transition-transform" data-alt="Small plate of nigiri" style='background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.8)), url("https://lh3.googleusercontent.com/aida-public/AB6AXuD_ijHvrqJj7MzlMdJLk2H4SBwnSYDDzOgfZzboz8sqKemVh5CPp6XX0idtr2jv5NEuMfawU6LtoBtHpnkzODGfmLkoCdmcSAtQ1jA4roMSeZtAWWMWSJXTC1SSXv_OqV5CqO8opI7gvl2pjpn7qTs7NZ20VbRlK7MmTkHm6CVq8dv94xjrL50j7k2c8ifNa5tje6b_rqKdtyMPnx1sxsldl7LivLCvC9HUI_HycZXbZCnUgybgkvm4sM-03dWi1K5mNS36RFe0ZmdL"); background-size: cover;'>
-<div class="absolute bottom-3 left-3">
-<p class="text-white text-[10px] font-semibold">Truffle Salmon</p>
-<p class="text-primary text-xs font-bold">$12.00</p>
-</div>
-</div>
-<div onclick="router.navigate('product')" class="relative rounded-2xl overflow-hidden shadow-lg bg-zinc-100 dark:bg-zinc-800 cursor-pointer hover:scale-[1.02] transition-transform" data-alt="Shrimp tempura roll" style='background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.8)), url("https://lh3.googleusercontent.com/aida-public/AB6AXuDKLfD9XkXlgLQjXBjDxah0VMzl88_9rIP-sKslLnPLHzW4_TzQ2ME-caE2ScAk8nBKLv8cZZNdNDSngJFRf_w-vrtf6LKh_nKDx1-Jie6GChMeVoEQh8A1M02D6GB0B9ViHseCEfUTNsD1LbLtHkrR2Y6aoVuL5xFHSJ-SU4aVv9bAMli6MfFbvkeyy3TujT1xfMMYoqc_zyrITEdnwvaQDj-1rtWJwWUHbZdSXrk-1x4j5AeaP2L3CeD9c9IgLNlN7uqbvhHbRNHC"); background-size: cover;'>
-<div class="absolute bottom-3 left-3">
-<p class="text-white text-[10px] font-semibold">Crispy Tempura</p>
-<p class="text-primary text-xs font-bold">$14.50</p>
-</div>
-</div>
+<div class="grid grid-cols-2 lg:grid-cols-4 grid-rows-2 lg:grid-rows-1 gap-3 h-[400px] lg:h-[300px]" id="chefChoiceContainer">
+<!-- Los productos destacados se generarán dinámicamente desde Firebase -->
 </div>
 </div>
 <!-- Sticky Bottom Area -->
@@ -343,111 +348,12 @@
 </div>
 </div>
 <!-- Chips / Filter Carousel -->
-<div class="flex gap-3 px-4 py-4 overflow-x-auto no-scrollbar sticky top-0 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-sm z-10">
-<div class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary px-6 text-white shadow-lg shadow-primary/20">
-<span class="text-sm font-semibold">Todo el Menú</span>
-</div>
-<div class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-zinc-100 dark:bg-zinc-800 px-6 border border-zinc-200 dark:border-zinc-700">
-<span class="text-sm font-medium">Salmón</span>
-</div>
-<div class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-zinc-100 dark:bg-zinc-800 px-6 border border-zinc-200 dark:border-zinc-700">
-<span class="text-sm font-medium">Pollo</span>
-</div>
-<div class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-zinc-100 dark:bg-zinc-800 px-6 border border-zinc-200 dark:border-zinc-700">
-<span class="text-sm font-medium">Vegetariano</span>
-</div>
-<div class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-zinc-100 dark:bg-zinc-800 px-6 border border-zinc-200 dark:border-zinc-700">
-<span class="text-sm font-medium">Rolls</span>
-</div>
+<div class="flex gap-3 px-4 py-4 overflow-x-auto no-scrollbar sticky top-0 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-sm z-10" id="categoryFiltersContainer">
+<!-- Los filtros de categorías se generarán dinámicamente desde Firebase -->
 </div>
 <!-- ImageGrid / Menu Items -->
-<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 p-4 products-grid">
-<!-- Item 1 -->
-<div class="flex flex-col gap-2 group">
-<div onclick="router.navigate('product')" class="relative w-full aspect-[4/5] bg-center bg-no-repeat bg-cover rounded-xl shadow-sm border border-zinc-100 dark:border-zinc-800 overflow-hidden cursor-pointer hover:scale-[1.02] transition-transform" data-alt="Gourmet Salmon Fusion Burger with rice bun and avocado" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDkccxMl3nixQg05DN3SDscEqqOavfzPX9OdHfYyhCMxKy77-w_yc3llBmjYqlM_z8y6RAzn1KTgUl-7OFZ2ze1vxC9oBC0-7BzjDupyMfGyDE0vZyDkzng_1g8coA8fiPgCs0gHKu9Nxcf5BdP8qdgB8PtLcP2J0Uu4BRUYPZZSh2KqPjzkJD8Cjabmi4l3f7EwPClvO2w6RIfRyGLKxyZ4rjQiF7rcdhtbgrwvn6bPQJkFy3ByMeRpbno0I5KuqG1tedDtzKmlfR3");'>
-<div class="absolute top-2 left-2 bg-white/90 dark:bg-black/80 px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider text-primary">Chef's Pick</div>
-</div>
-<div class="flex flex-col flex-1 justify-between pt-1">
-<div>
-<h3 class="text-[#171212] dark:text-white text-sm font-bold leading-tight">Salmon Fusion Burger</h3>
-<p class="text-[#836967] dark:text-zinc-400 text-xs font-medium mt-0.5">$14.50</p>
-</div>
-<button onclick="addToCartDirect(this)" class="mt-2 flex items-center justify-center gap-2 w-full py-2 bg-primary text-white rounded-lg text-xs font-bold transition-transform active:scale-95 shadow-md shadow-primary/20">
-<span class="material-symbols-outlined text-sm">add</span> Agregar
-                        </button>
-</div>
-</div>
-<!-- Item 2 -->
-<div class="flex flex-col gap-2 group">
-<div onclick="router.navigate('product')" class="relative w-full aspect-[4/5] bg-center bg-no-repeat bg-cover rounded-xl shadow-sm border border-zinc-100 dark:border-zinc-800 overflow-hidden cursor-pointer hover:scale-[1.02] transition-transform" data-alt="Crunchy Tempura Roll with golden flakes and sauce" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDwSswpk-mWxgAXyRW0dfxZl_1ZVVvwAzbNDAAKhmzjoymSL7_7a1rOJs4-ObAbrITi0AMwz7yXGb1edl5fdeCTC3Wk5z9gRQBS9JO6GVjczc4DKlMQf-9Uy7eGtgFL8AAN0ZjOvCF9RoGQFR_lrhg40Pk78mF8XvuuCHfRn0KNQm5ByOb8bnj3n9SqRgqNnlBy3xSVYA-aES4Vl-G3fev0Ejx3yYLm7L03qqdNSwAky-rjYSjI369258isIJempuQITIVON36Y_RoE");'>
-</div>
-<div class="flex flex-col flex-1 justify-between pt-1">
-<div>
-<h3 class="text-[#171212] dark:text-white text-sm font-bold leading-tight">Crunchy Tempura Roll</h3>
-<p class="text-[#836967] dark:text-zinc-400 text-xs font-medium mt-0.5">$12.00</p>
-</div>
-<button onclick="addToCartDirect(this)" class="mt-2 flex items-center justify-center gap-2 w-full py-2 bg-primary text-white rounded-lg text-xs font-bold transition-transform active:scale-95 shadow-md shadow-primary/20">
-<span class="material-symbols-outlined text-sm">add</span> Agregar
-                        </button>
-</div>
-</div>
-<!-- Item 3 -->
-<div class="flex flex-col gap-2 group">
-<div onclick="router.navigate('product')" class="relative w-full aspect-[4/5] bg-center bg-no-repeat bg-cover rounded-xl shadow-sm border border-zinc-100 dark:border-zinc-800 overflow-hidden cursor-pointer hover:scale-[1.02] transition-transform" data-alt="Green Zen Burger with tofu and pickled ginger" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAqOCKWEeI6Dj1x_puqtYxYDjJbkk0-cM0Ae1RetZFRB3t0ui4diRnQY6Bo92rnZFSL93MLHdM9gLk8vGddkdjBe6OY9JV9e0XCpRGnPtdEb7XC6u0jjMQYyb4LDi3Tlgx4gSgMMgF1ATiwguGll9VF8gY7mkLy2iMosFbRgIuPEUFbT5b2WCxsF4FU7RJPETf6Vut23-LnAGDs2MOkQBjm5ORVF16LWjvfS7G-L0Iu9Upiie2nSdoabQ0iDjLvfFp-jfJolSYR6pc7");'>
-<div class="absolute top-2 left-2 bg-[#6B705C]/90 px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider text-white">Vegetariano</div>
-</div>
-<div class="flex flex-col flex-1 justify-between pt-1">
-<div>
-<h3 class="text-[#171212] dark:text-white text-sm font-bold leading-tight">Green Zen Burger</h3>
-<p class="text-[#836967] dark:text-zinc-400 text-xs font-medium mt-0.5">$11.50</p>
-</div>
-<button onclick="addToCartDirect(this)" class="mt-2 flex items-center justify-center gap-2 w-full py-2 bg-primary text-white rounded-lg text-xs font-bold transition-transform active:scale-95 shadow-md shadow-primary/20">
-<span class="material-symbols-outlined text-sm">add</span> Agregar
-                        </button>
-</div>
-</div>
-<!-- Item 4 -->
-<div class="flex flex-col gap-2 group">
-<div onclick="router.navigate('product')" class="relative w-full aspect-[4/5] bg-center bg-no-repeat bg-cover rounded-xl shadow-sm border border-zinc-100 dark:border-zinc-800 overflow-hidden cursor-pointer hover:scale-[1.02] transition-transform" data-alt="Spicy Tuna Roll with red tuna and chili" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCzUCxw6NgO8iuNt0XZk-G2TMhwFaWRrQeByQmNA86xhvH2jNgWesLZ4Ms52LS7qinQgyXd043bi57y8P1jcUwCpLtKiFwa4sX9fW6oE7FqyOH3IAZvaXZn-Z3CungXlGVLc1ibMF1zmKh9ggKxaMumLEMEAfJjod5B6QWa8coG-eAFutJ8GPtXtQ811bpkq_IZ-LYbcxE8l3LQqaWWLQUkg9UFFy44ekNFk9quP1pEwp2Jfy-HfGvl7vrTuZld-qo38rPrerBqfGYf");'>
-</div>
-<div class="flex flex-col flex-1 justify-between pt-1">
-<div>
-<h3 class="text-[#171212] dark:text-white text-sm font-bold leading-tight">Spicy Tuna Roll</h3>
-<p class="text-[#836967] dark:text-zinc-400 text-xs font-medium mt-0.5">$13.00</p>
-</div>
-<button onclick="addToCartDirect(this)" class="mt-2 flex items-center justify-center gap-2 w-full py-2 bg-primary text-white rounded-lg text-xs font-bold transition-transform active:scale-95 shadow-md shadow-primary/20">
-<span class="material-symbols-outlined text-sm">add</span> Agregar
-                        </button>
-</div>
-</div>
-<!-- Item 5 -->
-<div class="flex flex-col gap-2 group">
-<div onclick="router.navigate('product')" class="relative w-full aspect-[4/5] bg-center bg-no-repeat bg-cover rounded-xl shadow-sm border border-zinc-100 dark:border-zinc-800 overflow-hidden cursor-pointer hover:scale-[1.02] transition-transform" data-alt="Chicken Katsu Burger with wasabi mayo" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBFW_yON7KlAFU9Eh4nV5SLNMNcIPE8-Ol3IRTSeygq9qnzSNXkjcbdAYAk6U3c18y-nf9A5m143xpSbz_DZ9n5SO6iJZJ9KO5SYDlG6Y0_zYM9psDZtZBd_UjKBk5b7uokIYT1DZ2UpREG7EZs_VTK_b-k8Odh7wgurX9qOjVVSPHs25sNtooUTVtS6JmpC-SNCTkH9AYONF0rHcXGjzY2uwBtc2Wa7iBK07Tt74cQJBhYJL-DVQqcvl42KmijNojM6RHZwjnRilWT");'>
-</div>
-<div class="flex flex-col flex-1 justify-between pt-1">
-<div>
-<h3 class="text-[#171212] dark:text-white text-sm font-bold leading-tight">Chicken Katsu Fusion</h3>
-<p class="text-[#836967] dark:text-zinc-400 text-xs font-medium mt-0.5">$12.50</p>
-</div>
-<button onclick="addToCartDirect(this)" class="mt-2 flex items-center justify-center gap-2 w-full py-2 bg-primary text-white rounded-lg text-xs font-bold transition-transform active:scale-95 shadow-md shadow-primary/20">
-<span class="material-symbols-outlined text-sm">add</span> Agregar
-                        </button>
-</div>
-</div>
-<!-- Item 6 -->
-<div class="flex flex-col gap-2 group">
-<div onclick="router.navigate('product')" class="relative w-full aspect-[4/5] bg-center bg-no-repeat bg-cover rounded-xl shadow-sm border border-zinc-100 dark:border-zinc-800 overflow-hidden cursor-pointer hover:scale-[1.02] transition-transform" data-alt="California Sun Roll with fresh crab" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAO2OeWxJ1W-GVqN1V60plyX9-vn68urm13Vsxxes6Vw8u8tob2wNCLViVVoyxAdJqn3Hv_b7CgMZUCNzjeprbZNWBZ_qnl4YdIZBa0sysYraMesFLQ5mISRMrxlEFBL4zmRv2kZSHM5c4jyK_t_Pkg4bEkhPuzNa39fcRaACMBqEbAvZjReep3UDlHkfDZJscwHODK0S__uW-Ko9utsWRRTKhMM9wip9pA3jyPeTkZsJw3bK6cMNjPy0jr-EkU8w71hHW8-4t_4cOd");'>
-</div>
-<div class="flex flex-col flex-1 justify-between pt-1">
-<div>
-<h3 class="text-[#171212] dark:text-white text-sm font-bold leading-tight">California Sun Roll</h3>
-<p class="text-[#836967] dark:text-zinc-400 text-xs font-medium mt-0.5">$10.00</p>
-</div>
-<button onclick="addToCartDirect(this)" class="mt-2 flex items-center justify-center gap-2 w-full py-2 bg-primary text-white rounded-lg text-xs font-bold transition-transform active:scale-95 shadow-md shadow-primary/20">
-<span class="material-symbols-outlined text-sm">add</span> Agregar
-                        </button>
-</div>
-</div>
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 p-4 products-grid" id="menuProductsContainer">
+<!-- Los productos se cargarán dinámicamente desde Firebase -->
 </div>
 <div class="h-24"></div>
 </main>
@@ -485,8 +391,8 @@
 <main class="flex-1 px-4 pt-4 pb-40">
 <!-- Promo Banner -->
 <div class="mb-6 p-4 rounded-xl bg-primary/5 dark:bg-primary/10 border border-primary/20 flex items-center gap-3">
-<span class="material-symbols-outlined text-primary">auto_awesome</span>
-<p class="text-sm font-medium text-primary">¡Agrega un roll más para envío gratis!</p>
+<span class="material-symbols-outlined text-primary">lightbulb</span>
+<p class="text-sm font-medium text-primary">💡 Consumo Inteligente: Planifica tu pedido y aprovecha mejor tu compra</p>
 </div>
 <!-- Cart Items List -->
 <div class="flex flex-col gap-4">
@@ -936,80 +842,33 @@ Revisa tu conversación de WhatsApp para ver los detalles de tu pedido.
 </div>
 <!-- Header Image Section -->
 <div class="@container w-full">
-<div class="relative w-full h-[45vh] min-h-80 overflow-hidden bg-white">
-<div class="absolute inset-0 bg-center bg-no-repeat bg-cover" data-alt="Gourmet sushi burger with rice buns and fresh salmon" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCbs3wVURfDe6DQear_i6r8cZFrJYEdTV9M3zeIdeCOeNtKIjdEcQ6dt5retY5wuSfck7SI9RuTULW52N_1R_21p7JgvRLr6l52HclGyQrK1A-KOK58_cnxkbO8l4wHtnR1wnJHBrZJIst75k0MdJy7jtXVRLaA2YvdngRCobX-jsGMngPgDl5aJnycY2XHlVxk3PqPnpnYtHJd6PhnB1vPHSWGHW4j8XAlyWG3pytgAGHKNxeEwJWfgVvjUd-QUThnqXO2v1FpN8jW");'>
-</div>
-<!-- Pagination Indicator -->
-<div class="absolute bottom-4 left-0 right-0 flex justify-center gap-1.5">
-<span class="h-1.5 w-6 rounded-full bg-white"></span>
-<span class="h-1.5 w-1.5 rounded-full bg-white/50"></span>
-<span class="h-1.5 w-1.5 rounded-full bg-white/50"></span>
+<div class="relative w-full h-[45vh] min-h-80 overflow-hidden bg-white" id="productImageContainer">
+<div class="absolute inset-0 bg-center bg-no-repeat bg-cover" id="productImage" style="background-image: url(''); background-color: #b5352c;">
 </div>
 </div>
 </div>
 <!-- Product Details -->
-<div class="px-5 pt-8">
+<div class="px-5 pt-8" id="productDetailsContainer">
 <div class="flex items-center justify-between">
-<span class="px-2.5 py-1 rounded-full bg-green-100 text-green-700 text-xs font-bold uppercase tracking-wider">Elección del Chef</span>
+<span id="productBadge" class="px-2.5 py-1 rounded-full bg-green-100 text-green-700 text-xs font-bold uppercase tracking-wider hidden"></span>
 <div class="flex items-center gap-1 text-primary">
 <span class="material-symbols-outlined !text-lg">star_rate</span>
-<span class="text-sm font-bold">4.9 (120+)</span>
+<span class="text-sm font-bold">4.9</span>
 </div>
 </div>
 <!-- Headline -->
-<h1 class="text-[#171212] dark:text-white tracking-tight text-3xl font-extrabold leading-tight pt-3">El Burger Katsu Rey</h1>
+<h1 id="productName" class="text-[#171212] dark:text-white tracking-tight text-3xl font-extrabold leading-tight pt-3">Cargando...</h1>
 <!-- Price -->
-<h2 class="text-primary text-2xl font-bold leading-tight pt-2">$18.50</h2>
+<h2 id="productPrice" class="text-primary text-2xl font-bold leading-tight pt-2">$0</h2>
 <!-- Body Description -->
-<p class="text-[#171212]/70 dark:text-white/70 text-base font-normal leading-relaxed pt-4">
-                Salmón empanizado crujiente, aguacate fresco y mayonesa picante servidos entre panecillos de arroz tostados con sésamo. Una fusión única de texturas y sabores que redefine la experiencia del sushi.
+<p id="productDescription" class="text-[#171212]/70 dark:text-white/70 text-base font-normal leading-relaxed pt-4">
+                Cargando descripción...
             </p>
 </div>
 <div class="h-4"></div>
 <!-- Customization Modules -->
-<div class="px-5 lg:px-8 space-y-6 form-section">
-<!-- Ingredientes -->
-<section>
-<h3 class="text-[#171212] dark:text-white text-lg font-bold pb-3">Ingredientes</h3>
-<div class="grid grid-cols-1 gap-3">
-<div class="flex items-center gap-3 p-4 rounded-xl border border-[#171212]/10 dark:border-white/10 bg-white dark:bg-white/5">
-<div class="w-10 h-10 rounded-lg bg-orange-100 flex items-center justify-center text-orange-600">
-<span class="material-symbols-outlined">liquor</span>
-</div>
-<div>
-<p class="font-bold text-sm dark:text-white">Salsa Unagi</p>
-<p class="text-xs text-[#171212]/50 dark:text-white/50">Dulce y Salado</p>
-</div>
-</div>
-<div class="flex items-center gap-3 p-4 rounded-xl border border-[#171212]/10 dark:border-white/10 bg-white dark:bg-white/5">
-<div class="w-10 h-10 rounded-lg bg-red-100 flex items-center justify-center text-red-600">
-<span class="material-symbols-outlined">local_fire_department</span>
-</div>
-<div>
-<p class="font-bold text-sm dark:text-white">Mayonesa Picante</p>
-<p class="text-xs text-[#171212]/50 dark:text-white/50">Cremosa y Picante</p>
-</div>
-</div>
-</div>
-</section>
-<!-- Ingredientes Adicionales -->
-<section>
-<h3 class="text-[#171212] dark:text-white text-lg font-bold pb-3">Ingredientes Adicionales Disponibles</h3>
-<div class="flex gap-4 overflow-x-auto custom-scroll-hide">
-<div class="min-w-[140px] flex flex-col p-4 rounded-xl border border-[#171212]/10 dark:border-white/10 bg-white dark:bg-white/5">
-<span class="material-symbols-outlined text-green-600 mb-2">nutrition</span>
-<p class="font-bold text-sm dark:text-white">Aguacate Extra</p>
-</div>
-<div class="min-w-[140px] flex flex-col p-4 rounded-xl border border-[#171212]/10 dark:border-white/10 bg-white dark:bg-white/5">
-<span class="material-symbols-outlined text-yellow-600 mb-2">grain</span>
-<p class="font-bold text-sm dark:text-white">Hojuelas de Tempura</p>
-</div>
-<div class="min-w-[140px] flex flex-col p-4 rounded-xl border border-[#171212]/10 dark:border-white/10 bg-white dark:bg-white/5">
-<span class="material-symbols-outlined text-red-600 mb-2">restaurant</span>
-<p class="font-bold text-sm dark:text-white">Jengibre Fresco</p>
-</div>
-</div>
-</section>
+<div class="px-5 lg:px-8 space-y-6 form-section" id="productIngredientsContainer">
+<!-- Ingredientes se cargarán dinámicamente -->
 </div>
 <!-- Safe area spacer for modern iOS -->
 <div class="h-8"></div>
@@ -1069,11 +928,9 @@ const router = {
         // Resetear selecciones cuando se navega a la página del producto
         selectedSauces = ['mayonesa'];
         selectedExtras = [];
-        // Actualizar el precio inicial
+        // Cargar producto seleccionado
         setTimeout(() => {
-          if (typeof updateProductPrice === 'function') {
-            updateProductPrice();
-          }
+          loadProductDetails();
         }, 100);
       }
       
@@ -1097,11 +954,29 @@ const router = {
         }, 100);
       }
       
-      // Si estamos navegando al menú, actualizar el estado de stock
+      // Si estamos navegando al menú, cargar productos si no están cargados
       if (pageName === 'menu') {
         setTimeout(() => {
+          const container = document.getElementById('menuProductsContainer');
+          if (container && (container.children.length === 0 || container.innerHTML.trim() === '')) {
+            loadProductsFromFirebase((products) => {
+              generateCategoryFilters(products);
+              generateMenuHTML(products);
+            });
+          }
           updateMenuStockStatus();
-        }, 100);
+        }, 200);
+      }
+      
+      // Si estamos navegando al home, actualizar categorías y productos destacados
+      if (pageName === 'home') {
+        setTimeout(() => {
+          loadProductsFromFirebase((products) => {
+            generateHomeCategories(products);
+            generateChefChoice(products);
+            updatePromoHeroSlide(products);
+          });
+        }, 200);
       }
     } else {
       console.warn(`Página "${pageName}" no encontrada`);
@@ -1253,52 +1128,147 @@ function updateProductQuantity(change) {
 }
 
 // Función para agregar producto directamente al carrito desde el menú (sin personalizaciones)
-function addToCartDirect(button) {
-  // Verificar si el botón está deshabilitado
-  if (button.disabled) {
-    return;
+// Variable global para rastrear botones que están siendo procesados
+const processingButtons = new Set();
+
+function addToCartDirect(button, event) {
+  // Prevenir propagación SIEMPRE, incluso si event es undefined
+  if (event) {
+    event.preventDefault();
+    event.stopPropagation();
+    event.stopImmediatePropagation();
   }
+  
+  // Crear un ID único para este botón basado en su posición en el DOM
+  const buttonId = button.outerHTML.length + Date.now();
+  
+  // Verificar si el botón está deshabilitado o ya está procesándose
+  if (button.disabled || processingButtons.has(buttonId)) {
+    return false;
+  }
+  
+  // Marcar el botón como procesando INMEDIATAMENTE
+  processingButtons.add(buttonId);
+  button.dataset.processing = 'true';
   
   // Obtener el contenedor del item (el div padre que contiene nombre y precio)
   const itemContainer = button.closest('.flex.flex-col.gap-2, .flex.flex-col.group');
-  if (!itemContainer) return;
+  if (!itemContainer) {
+    delete button.dataset.processing;
+    return;
+  }
   
   // Obtener nombre y precio del producto
   const nameEl = itemContainer.querySelector('h3');
   const priceEl = itemContainer.querySelector('p.text-\\[\\#836967\\].dark\\:text-zinc-400');
   
-  if (!nameEl || !priceEl) return;
+  if (!nameEl || !priceEl) {
+    delete button.dataset.processing;
+    return;
+  }
   
   const productName = nameEl.textContent.trim();
   const priceText = priceEl.textContent.trim().replace('$', '').replace(',', '');
   const price = parseFloat(priceText) || 0;
   
-  if (!productName || price === 0) return;
+  if (!productName || price === 0) {
+    delete button.dataset.processing;
+    return;
+  }
   
   // Verificar stock antes de agregar
   getItemStockStatus(productName, (isInStock) => {
+    // Función de limpieza
+    const cleanup = () => {
+      setTimeout(() => {
+        delete button.dataset.processing;
+        processingButtons.delete(buttonId);
+      }, 500);
+    };
+    
     if (!isInStock) {
       alert('Este producto está actualmente agotado');
+      cleanup();
       return;
     }
     
     // Continuar con la lógica de agregar al carrito
     addProductToCartInternal(productName, price);
+    
+    // Limpiar el flag después de un breve delay
+    cleanup();
   });
+  
+  // Retornar false para prevenir acciones por defecto
+  return false;
 }
+
+// Variable para prevenir doble agregado en la misma llamada
+let isAddingToCart = false;
 
 // Función interna para agregar producto al carrito (separada para reutilización)
 function addProductToCartInternal(productName, price) {
+  // Prevenir doble ejecución simultánea
+  if (isAddingToCart) {
+    console.log('Ya se está agregando un producto al carrito, ignorando duplicado');
+    return;
+  }
+  
+  // Marcar que estamos agregando
+  isAddingToCart = true;
+  
   // Obtener el contenedor del carrito
   const cartContainer = document.querySelector('#page-orders main .flex.flex-col.gap-4');
-  if (!cartContainer) return;
+  if (!cartContainer) {
+    isAddingToCart = false;
+    return;
+  }
   
-  // Crear el elemento del carrito
-  const cartItem = document.createElement('div');
-  cartItem.className = 'flex items-center gap-4 bg-white dark:bg-zinc-900 p-3 rounded-xl shadow-sm border border-gray-50 dark:border-zinc-800 justify-between';
-  cartItem.innerHTML = `
+  // Verificar si el producto ya está en el carrito antes de agregar (evitar duplicados)
+  const existingItems = cartContainer.querySelectorAll('.bg-white.dark\\:bg-zinc-900');
+  for (let item of existingItems) {
+    const nameEl = item.querySelector('p.text-base.font-bold');
+    if (nameEl && nameEl.textContent.trim() === productName) {
+      // El producto ya existe en el carrito, solo incrementar cantidad
+      const quantityInput = item.querySelector('input[type="number"]');
+      if (quantityInput) {
+        const currentQuantity = parseInt(quantityInput.value) || 1;
+        quantityInput.value = currentQuantity + 1;
+        updateCartTotals();
+        updateCartBadges();
+        isAddingToCart = false;
+        return; // Salir sin agregar duplicado
+      }
+    }
+  }
+  
+  // Buscar el producto en Firebase para obtener su imagen
+  loadProductsFromFirebase((products) => {
+    const product = products.find(p => p.name === productName);
+    let productImage = '';
+    
+    if (product && product.imageUrl) {
+      const imageUrlRaw = product.imageUrl || '';
+      const hasImage = imageUrlRaw.trim() !== '' && (
+        imageUrlRaw.startsWith('http://') || 
+        imageUrlRaw.startsWith('https://') || 
+        imageUrlRaw.startsWith('data:image')
+      );
+      if (hasImage) {
+        productImage = imageUrlRaw;
+      } else {
+        productImage = getPlaceholderImage(productName, product.category || '');
+      }
+    } else {
+      productImage = getPlaceholderImage(productName, '');
+    }
+    
+    // Crear el elemento del carrito
+    const cartItem = document.createElement('div');
+    cartItem.className = 'flex items-center gap-4 bg-white dark:bg-zinc-900 p-3 rounded-xl shadow-sm border border-gray-50 dark:border-zinc-800 justify-between';
+    cartItem.innerHTML = `
     <div class="flex items-center gap-4">
-      <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-20 shadow-inner bg-gray-200 dark:bg-zinc-800"></div>
+      <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-20 shadow-inner bg-gray-200 dark:bg-zinc-800" style="background-image: url('${productImage}'); background-color: #b5352c;"></div>
       <div class="flex flex-col justify-center flex-1">
         <p class="text-[#171212] dark:text-white text-base font-bold leading-tight line-clamp-1">${productName}</p>
         <p class="text-[#836967] dark:text-zinc-400 text-sm font-medium mt-1">$${price.toFixed(2)}</p>
@@ -1340,14 +1310,12 @@ function addProductToCartInternal(productName, price) {
   // Actualizar badges
   updateCartBadges();
   
-  // Efecto visual de confirmación en el botón
-  button.style.transform = 'scale(0.95)';
-  setTimeout(() => {
-    button.style.transform = '';
-  }, 150);
-  
-  // Navegar automáticamente al carrito
-  router.navigate('orders');
+    // Liberar el flag DESPUÉS de completar la inserción
+    isAddingToCart = false;
+    
+    // Navegar automáticamente al carrito
+    router.navigate('orders');
+  });
 }
 
 // Función para actualizar los totales del carrito en el footer
@@ -2094,7 +2062,11 @@ const cartFunctions = {
     if (event) {
       event.preventDefault();
       event.stopPropagation();
+      event.stopImmediatePropagation(); // Prevenir que otros listeners manejen el evento
     }
+    
+    // Marcar el botón como manejado para prevenir doble ejecución
+    button.dataset.handled = 'true';
     
     const container = button.closest('.flex.flex-col.items-center');
     if (container) {
@@ -2111,6 +2083,11 @@ const cartFunctions = {
       }
     }
     
+    // Remover el flag después de un breve delay para permitir futuros clicks
+    setTimeout(() => {
+      delete button.dataset.handled;
+    }, 100);
+    
     // Retornar false para prevenir propagación adicional
     return false;
   },
@@ -2121,7 +2098,11 @@ const cartFunctions = {
     if (event) {
       event.preventDefault();
       event.stopPropagation();
+      event.stopImmediatePropagation(); // Prevenir que otros listeners manejen el evento
     }
+    
+    // Marcar el botón como manejado para prevenir doble ejecución
+    button.dataset.handled = 'true';
     
     const container = button.closest('.flex.flex-col.items-center');
     if (container) {
@@ -2139,6 +2120,11 @@ const cartFunctions = {
         }
       }
     }
+    
+    // Remover el flag después de un breve delay para permitir futuros clicks
+    setTimeout(() => {
+      delete button.dataset.handled;
+    }, 100);
     
     // Retornar false para prevenir propagación adicional
     return false;
@@ -2172,15 +2158,34 @@ document.addEventListener('DOMContentLoaded', () => {
   // Inicializar badges del carrito
   updateCartBadges();
   
-  // Esperar a que Firebase esté listo y luego inicializar el estado de stock
+  // Esperar a que Firebase esté listo y luego cargar productos
   const checkFirebaseAndInit = setInterval(() => {
-    if (window.firebaseReady || !window.firebaseDB) {
+    if (window.firebaseReady && window.firebaseDB) {
       clearInterval(checkFirebaseAndInit);
+      
+      // Cargar productos y generar menú
+      loadProductsFromFirebase((products) => {
+        generateCategoryFilters(products);
+        generateMenuHTML(products);
+        generateHomeCategories(products);
+        generateChefChoice(products);
+        updatePromoHeroSlide(products);
+        
+        // Configurar listener en tiempo real para productos
+        listenToProductsChanges((products) => {
+          generateCategoryFilters(products);
+          generateMenuHTML(products);
+          generateHomeCategories(products);
+          generateChefChoice(products);
+          updatePromoHeroSlide(products);
+        });
+      });
+      
       // Si estamos en la página del menú, actualizar el estado de stock
       if (router.currentPage === 'menu') {
         setTimeout(() => {
           updateMenuStockStatus();
-        }, 300);
+        }, 500);
       }
     }
   }, 100);
@@ -2188,12 +2193,24 @@ document.addEventListener('DOMContentLoaded', () => {
   // Timeout de seguridad después de 3 segundos
   setTimeout(() => {
     clearInterval(checkFirebaseAndInit);
-    if (router.currentPage === 'menu') {
-      updateMenuStockStatus();
+    if (window.firebaseReady && window.firebaseDB) {
+      loadProductsFromFirebase((products) => {
+        if (products.length > 0) {
+          generateCategoryFilters(products);
+          generateMenuHTML(products);
+          generateHomeCategories(products);
+          generateChefChoice(products);
+          updatePromoHeroSlide(products);
+          if (router.currentPage === 'menu') {
+            updateMenuStockStatus();
+          }
+        }
+      });
     }
   }, 3000);
   
   // Agregar funcionalidad a botones de cantidad usando delegación de eventos
+  // Usar CAPTURE phase para ejecutar ANTES que los onclick inline
   document.addEventListener('click', function(e) {
     // Verificar si el click es en un botón o en su icono
     let btn = e.target.closest('button');
@@ -2207,6 +2224,27 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (!btn) return;
     
+    // Verificar si el botón tiene onclick o data attribute que indique que ya tiene manejador
+    const hasOnclick = btn.getAttribute('onclick');
+    const hasDataHandler = btn.dataset.handled === 'true';
+    const isProcessing = btn.dataset.processing === 'true';
+    
+    // Verificar si es un botón "Agregar" (contiene texto "Agregar") - estos tienen su propio manejador
+    const buttonText = btn.textContent || '';
+    const isAddButton = buttonText.toLowerCase().includes('agregar');
+    
+    // Si es un botón "Agregar", detener la propagación y NO procesar
+    if (isAddButton) {
+      // Detener completamente el evento para que solo el onclick se ejecute
+      e.stopImmediatePropagation();
+      return;
+    }
+    
+    // Si tiene onclick, NO procesar con el listener global (salir temprano)
+    if (hasOnclick || hasDataHandler || isProcessing) {
+      return; // Salir temprano para evitar procesamiento adicional
+    }
+    
     // Buscar el icono dentro del botón
     const icon = btn.querySelector('span.material-symbols-outlined');
     if (!icon) return;
@@ -2216,8 +2254,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!quantityContainer) return;
     
     // Botones de incrementar (icono "add")
-    // Solo procesar si el botón NO tiene onclick directo (para evitar doble ejecución)
-    if ((icon.textContent.trim() === 'add' || icon.textContent.includes('add')) && !btn.getAttribute('onclick')) {
+    // Solo procesar si está en un contenedor de cantidad y no tiene manejadores adicionales
+    if (icon.textContent.trim() === 'add' || icon.textContent.includes('add')) {
       const input = quantityContainer.querySelector('input[type="number"]');
       if (input) {
         e.preventDefault();
@@ -2353,105 +2391,491 @@ function getAllStockStatus(callback) {
   }
 }
 
-// Array con todos los items del menú
-const MENU_ITEMS = [
-  {
-    name: 'Salmon Fusion Burger',
-    price: 14.50,
-    category: 'Plato Principal',
-    imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDkccxMl3nixQg05DN3SDscEqqOavfzPX9OdHfYyhCMxKy77-w_yc3llBmjYqlM_z8y6RAzn1KTgUl-7OFZ2ze1vxC9oBC0-7BzjDupyMfGyDE0vZyDkzng_1g8coA8fiPgCs0gHKu9Nxcf5BdP8qdgB8PtLcP2J0Uu4BRUYPZZSh2KqPjzkJD8Cjabmi4l3f7EwPClvO2w6RIfRyGLKxyZ4rjQiF7rcdhtbgrwvn6bPQJkFy3ByMeRpbno0I5KuqG1tedDtzKmlfR3',
-    alt: 'Gourmet Salmon Fusion Burger with rice bun and avocado',
-    inStock: true
-  },
-  {
-    name: 'Crunchy Tempura Roll',
-    price: 12.00,
-    category: 'Sushi',
-    imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDwSswpk-mWxgAXyRW0dfxZl_1ZVVvwAzbNDAAKhmzjoymSL7_7a1rOJs4-ObAbrITi0AMwz7yXGb1edl5fdeCTC3Wk5z9gRQBS9JO6GVjczc4DKlMQf-9Uy7eGtgFL8AAN0ZjOvCF9RoGQFR_lrhg40Pk78mF8XvuuCHfRn0KNQm5ByOb8bnj3n9SqRgqNnlBy3xSVYA-aES4Vl-G3fev0Ejx3yYLm7L03qqdNSwAky-rjYSjI369258isIJempuQITIVON36Y_RoE',
-    alt: 'Crunchy Tempura Roll with golden flakes and sauce',
-    inStock: true
-  },
-  {
-    name: 'Green Zen Burger',
-    price: 11.50,
-    category: 'Plato Principal',
-    imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAqOCKWEeI6Dj1x_puqtYxYDjJbkk0-cM0Ae1RetZFRB3t0ui4diRnQY6Bo92rnZFSL93MLHdM9gLk8vGddkdjBe6OY9JV9e0XCpRGnPtdEb7XC6u0jjMQYyb4LDi3Tlgx4gSgMMgF1ATiwguGll9VF8gY7mkLy2iMosFbRgIuPEUFbT5b2WCxsF4FU7RJPETf6Vut23-LnAGDs2MOkQBjm5ORVF16LWjvfS7G-L0Iu9Upiie2nSdoabQ0iDjLvfFp-jfJolSYR6pc7',
-    alt: 'Green Zen Burger with tofu and pickled ginger',
-    inStock: true
-  },
-  {
-    name: 'Spicy Tuna Roll',
-    price: 13.00,
-    category: 'Sushi',
-    imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCzUCxw6NgO8iuNt0XZk-G2TMhwFaWRrQeByQmNA86xhvH2jNgWesLZ4Ms52LS7qinQgyXd043bi57y8P1jcUwCpLtKiFwa4sX9fW6oE7FqyOH3IAZvaXZn-Z3CungXlGVLc1ibMF1zmKh9ggKxaMumLEMEAfJjod5B6QWa8coG-eAFutJ8GPtXtQ811bpkq_IZ-LYbcxE8l3LQqaWWLQUkg9UFFy44ekNFk9quP1pEwp2Jfy-HfGvl7vrTuZld-qo38rPrerBqfGYf',
-    alt: 'Spicy Tuna Roll with red tuna and chili',
-    inStock: true
-  },
-  {
-    name: 'Chicken Katsu Fusion',
-    price: 12.50,
-    category: 'Plato Principal',
-    imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBFW_yON7KlAFU9Eh4nV5SLNMNcIPE8-Ol3IRTSeygq9qnzSNXkjcbdAYAk6U3c18y-nf9A5m143xpSbz_DZ9n5SO6iJZJ9KO5SYDlG6Y0_zYM9psDZtZBd_UjKBk5b7uokIYT1DZ2UpREG7EZs_VTK_b-k8Odh7wgurX9qOjVVSPHs25sNtooUTVtS6JmpC-SNCTkH9AYONF0rHcXGjzY2uwBtc2Wa7iBK07Tt74cQJBhYJL-DVQqcvl42KmijNojM6RHZwjnRilWT',
-    alt: 'Chicken Katsu Burger with wasabi mayo',
-    inStock: true
-  },
-  {
-    name: 'California Sun Roll',
-    price: 10.00,
-    category: 'Sushi',
-    imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAO2OeWxJ1W-GVqN1V60plyX9-vn68urm13Vsxxes6Vw8u8tob2wNCLViVVoyxAdJqn3Hv_b7CgMZUCNzjeprbZNWBZ_qnl4YdIZBa0sysYraMesFLQ5mISRMrxlEFBL4zmRv2kZSHM5c4jyK_t_Pkg4bEkhPuzNa39fcRaACMBqEbAvZjReep3UDlHkfDZJscwHODK0S__uW-Ko9utsWRRTKhMM9wip9pA3jyPeTkZsJw3bK6cMNjPy0jr-EkU8w71hHW8-4t_4cOd',
-    alt: 'California Sun Roll with fresh crab',
-    inStock: true
+// Array con todos los items del menú (se carga dinámicamente desde Firebase)
+let MENU_ITEMS = [];
+let productsListenerUnsubscribe = null;
+let currentCategoryFilter = 'all'; // Filtro de categoría actual
+
+// Función para cargar productos desde Firebase
+function loadProductsFromFirebase(callback) {
+  if (!window.firebaseDB || !window.firebaseReady) {
+    if (callback) callback([]);
+    return;
   }
-];
+  
+  const productsRef = window.firebaseRef(window.firebaseDB, 'products');
+  
+  window.firebaseGet(productsRef).then((snapshot) => {
+    const productsData = snapshot.val() || {};
+    const productsArray = Object.values(productsData);
+    
+    MENU_ITEMS = productsArray;
+    
+    if (callback) callback(productsArray);
+  }).catch((error) => {
+    console.error('Error al cargar productos:', error);
+    if (callback) callback([]);
+  });
+}
+
+// Función para escuchar cambios en productos en tiempo real
+function listenToProductsChanges(callback) {
+  if (!window.firebaseDB || !window.firebaseReady) return;
+  
+  if (productsListenerUnsubscribe) {
+    window.firebaseOff(window.firebaseRef(window.firebaseDB, 'products'), productsListenerUnsubscribe);
+  }
+  
+  const productsRef = window.firebaseRef(window.firebaseDB, 'products');
+  productsListenerUnsubscribe = window.firebaseOnValue(productsRef, (snapshot) => {
+    const productsData = snapshot.val() || {};
+    const productsArray = Object.values(productsData);
+    MENU_ITEMS = productsArray;
+    if (callback) callback(productsArray);
+  });
+}
+
+// Función para generar los filtros de categorías dinámicamente
+function generateCategoryFilters(products) {
+  const container = document.getElementById('categoryFiltersContainer');
+  if (!container) return;
+  
+  // Obtener categorías únicas de los productos
+  const categories = ['all', ...new Set(products.map(p => p.category).filter(c => c && c !== 'Sin categoría'))];
+  
+  container.innerHTML = '';
+  
+  categories.forEach(category => {
+    const isActive = currentCategoryFilter === category;
+    const displayName = category === 'all' ? 'Todo el Menú' : category;
+    const chipHTML = `
+<div onclick="filterByCategory('${category}')" class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full px-6 cursor-pointer transition-all ${isActive ? 'bg-primary text-white shadow-lg shadow-primary/20' : 'bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-gray-700 dark:text-gray-300 hover:bg-zinc-200 dark:hover:bg-zinc-700'}">
+<span class="text-sm ${isActive ? 'font-semibold' : 'font-medium'}">${displayName}</span>
+</div>
+`;
+    container.innerHTML += chipHTML;
+  });
+}
+
+// Función para filtrar productos por categoría
+function filterByCategory(category) {
+  currentCategoryFilter = category;
+  // Regenerar filtros con la categoría activa
+  generateCategoryFilters(MENU_ITEMS);
+  // Regenerar el menú con el filtro aplicado
+  generateMenuHTML(MENU_ITEMS);
+}
+
+// Función para generar las categorías del home con imágenes reales de productos
+function generateHomeCategories(products) {
+  const container = document.getElementById('homeCategoriesContainer');
+  if (!container) return;
+  
+  // Obtener categorías únicas (excluir 'Sin categoría')
+  const categories = [...new Set(products.map(p => p.category).filter(c => c && c !== 'Sin categoría'))];
+  
+  container.innerHTML = '';
+  
+  // Limitar a 4 categorías para el diseño del home
+  const displayCategories = categories.slice(0, 4);
+  
+  displayCategories.forEach(category => {
+    let categoryImage = '';
+    
+    // URL específica para la categoría "Gohan"
+    const gohanImageUrl = 'https://images-cdn.kyte.site/v0/b/kyte-7c484.appspot.com/o/EGgbMOFFpKckghElVUHQn6vbYF82%2Fthumb_280_11f60fe9-f263-44d1-be80-a8b1fba7556d.jpg?alt=media';
+    
+    // Si la categoría es "Gohan", usar la URL específica
+    const normalizedCategory = (category || '').toLowerCase().trim();
+    if (normalizedCategory.includes('gohan')) {
+      categoryImage = gohanImageUrl;
+    } else {
+      // Buscar el primer producto de esta categoría que tenga imagen
+      const categoryProduct = products.find(p => p.category === category && p.imageUrl && p.imageUrl.trim() !== '');
+      
+      // Si no hay producto con imagen, usar placeholder
+      categoryImage = categoryProduct 
+        ? categoryProduct.imageUrl 
+        : getPlaceholderImage(category, category);
+    }
+    
+    const categoryHTML = `
+<div onclick="router.navigate('menu'); filterByCategory('${category}');" class="flex flex-col gap-3 rounded-2xl border border-gray-100 dark:border-gray-800 bg-white dark:bg-zinc-900 p-4 items-center justify-center text-center shadow-sm hover:border-primary transition-all group cursor-pointer">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full w-16 shrink-0 shadow-md group-hover:scale-105 transition-transform" data-alt="${category}" style="background-image: url('${categoryImage}'); background-color: #b5352c;"></div>
+<h2 class="text-[#171212] dark:text-white text-sm font-bold leading-tight">${category}</h2>
+</div>
+`;
+    container.innerHTML += categoryHTML;
+  });
+}
+
+// Función para actualizar la imagen del slide de promoción con una imagen de productos de promociones
+function updatePromoHeroSlide(products) {
+  const promoSlide = document.getElementById('promoHeroSlide');
+  if (!promoSlide) return;
+  
+  // Buscar productos de la categoría "promociones"
+  const promoProducts = products.filter(p => {
+    const category = (p.category || '').toLowerCase().trim();
+    return category.includes('promocion') || category === 'promociones';
+  });
+  
+  // Si hay productos de promociones con imagen, usar la primera imagen disponible
+  if (promoProducts.length > 0) {
+    const promoWithImage = promoProducts.find(p => p.imageUrl && p.imageUrl.trim() !== '');
+    if (promoWithImage && promoWithImage.imageUrl) {
+      const imageUrl = promoWithImage.imageUrl;
+      promoSlide.style.backgroundImage = `linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.7)), url('${imageUrl}')`;
+      return;
+    }
+  }
+  
+  // Si no hay productos de promociones con imagen, mantener la imagen por defecto
+  // (ya está configurada en el HTML)
+}
+
+// Función para generar "Elección del Chef" con productos destacados
+function generateChefChoice(products) {
+  const container = document.getElementById('chefChoiceContainer');
+  if (!container) return;
+  
+  container.innerHTML = '';
+  
+  if (products.length === 0) return;
+  
+  // Filtrar productos marcados como "Elección del Chef" (isChefChoice === true)
+  let featuredProducts = products.filter(p => p.isChefChoice === true);
+  
+  // Si no hay productos marcados como "Elección del Chef", usar fallback:
+  // Productos con badge "Chef's Pick" o similares
+  if (featuredProducts.length === 0) {
+    featuredProducts = products.filter(p => p.badge && (p.badge.toLowerCase().includes('chef') || p.badge.toLowerCase().includes('pick')));
+  }
+  
+  // Si aún no hay productos, tomar los primeros 3 productos que tengan imágenes
+  if (featuredProducts.length === 0) {
+    featuredProducts = products.filter(p => p.imageUrl && p.imageUrl.trim() !== '').slice(0, 3);
+  } else {
+    // Limitar a 3 productos (los primeros que estén marcados como Chef)
+    featuredProducts = featuredProducts.slice(0, 3);
+  }
+  
+  // Si aún no hay suficientes, completar con cualquier producto que tenga imagen
+  while (featuredProducts.length < 3 && featuredProducts.length < products.length) {
+    const remaining = products.filter(p => !featuredProducts.includes(p) && p.imageUrl && p.imageUrl.trim() !== '');
+    if (remaining.length > 0) {
+      featuredProducts.push(remaining[0]);
+    } else {
+      break;
+    }
+  }
+  
+  featuredProducts.forEach((product, index) => {
+    const hasImage = product.imageUrl && product.imageUrl.trim() !== '';
+    const imageUrl = hasImage ? product.imageUrl : getPlaceholderImage(product.name, product.category);
+    
+    // El primer producto ocupa 2 filas en móvil, 1 en desktop
+    const isFirst = index === 0;
+    const itemClass = isFirst ? 'row-span-2 lg:row-span-1' : '';
+    const bottomClass = isFirst ? 'bottom-4 left-4 right-4' : 'bottom-3 left-3';
+    const nameClass = isFirst ? 'text-xs font-semibold mb-1' : 'text-[10px] font-semibold';
+    const priceClass = isFirst ? 'text-primary font-bold' : 'text-primary text-xs font-bold';
+    
+    const itemHTML = `
+<div onclick="selectProduct('${(product.name || '').replace(/'/g, "\\'").replace(/"/g, '&quot;')}'); router.navigate('product');" class="${itemClass} relative rounded-2xl overflow-hidden shadow-lg bg-zinc-100 dark:bg-zinc-800 cursor-pointer hover:scale-[1.02] transition-transform" data-alt="${product.alt || product.name || ''}" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.8)), url('${imageUrl}'); background-size: cover; background-color: #b5352c;">
+<div class="absolute ${bottomClass}">
+<p class="text-white ${nameClass}">${product.name}</p>
+<p class="${priceClass}">${formatPrice(product.price)}</p>
+</div>
+</div>
+`;
+    container.innerHTML += itemHTML;
+  });
+}
+
+// Función para generar el HTML del menú dinámicamente
+function generateMenuHTML(products) {
+  const container = document.getElementById('menuProductsContainer');
+  if (!container) return;
+  
+  container.innerHTML = '';
+  
+  if (products.length === 0) {
+    container.innerHTML = '<div class="col-span-full text-center text-gray-400 p-8">No hay productos disponibles</div>';
+    return;
+  }
+  
+  // Filtrar productos por categoría si no es 'all'
+  let filteredProducts = currentCategoryFilter === 'all' 
+    ? products 
+    : products.filter(p => p.category === currentCategoryFilter);
+  
+  if (filteredProducts.length === 0) {
+    container.innerHTML = '<div class="col-span-full text-center text-gray-400 p-8">No hay productos en esta categoría</div>';
+    return;
+  }
+  
+  // Ordenar productos por categoría según el orden especificado (se aplica siempre, incluso cuando el filtro es 'all')
+  const categoryOrder = [
+    'sushi burger',  // Coincide con "Sushi burger" en la BD (la normalización maneja mayúsculas y espacios)
+    'gohan',
+    'sushipleto',
+    'fries',
+    'bebestibles',
+    'promociones',
+    'salsas'
+  ];
+  
+  // Función para normalizar una categoría (minúsculas, sin espacios, sin acentos)
+  const normalizeCategory = (category) => {
+    if (!category) return '';
+    return category
+      .toLowerCase()
+      .trim()
+      .replace(/\s+/g, '') // Eliminar todos los espacios
+      .normalize('NFD') // Normalizar caracteres Unicode (separar acentos)
+      .replace(/[\u0300-\u036f]/g, ''); // Eliminar diacríticos (acentos)
+  };
+  
+  // Función para obtener el índice de orden de una categoría
+  const getCategoryOrder = (category) => {
+    if (!category) return 999;
+    
+    const normalizedCategory = normalizeCategory(category);
+    
+    // Buscar coincidencia exacta primero (más preciso)
+    let index = categoryOrder.findIndex(cat => {
+      const catNormalized = normalizeCategory(cat);
+      return normalizedCategory === catNormalized;
+    });
+    
+    // Si no hay coincidencia exacta, buscar coincidencia parcial (que contenga la palabra clave)
+    if (index === -1) {
+      index = categoryOrder.findIndex(cat => {
+        const catNormalized = normalizeCategory(cat);
+        // Coincidencia si la categoría normalizada contiene la palabra clave o viceversa
+        return normalizedCategory.includes(catNormalized) || catNormalized.includes(normalizedCategory);
+      });
+    }
+    
+    // Si no se encuentra, asignar un índice alto para que aparezca al final
+    return index === -1 ? 999 : index;
+  };
+  
+  // Ordenar productos: primero por categoría según categoryOrder, luego por nombre alfabéticamente
+  filteredProducts = filteredProducts.sort((a, b) => {
+    const orderA = getCategoryOrder(a.category);
+    const orderB = getCategoryOrder(b.category);
+    
+    // Primero ordenar por índice de categoría (según categoryOrder)
+    if (orderA !== orderB) {
+      return orderA - orderB;
+    }
+    
+    // Si tienen el mismo orden de categoría, ordenar por nombre alfabéticamente
+    const nameA = (a.name || '').toLowerCase().trim();
+    const nameB = (b.name || '').toLowerCase().trim();
+    return nameA.localeCompare(nameB);
+  });
+  
+  filteredProducts.forEach((product) => {
+    const badgeHTML = product.badge ? `<div class="absolute top-2 left-2 ${getBadgeClass(product.badge)} px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider ${getBadgeTextClass(product.badge)}">${product.badge}</div>` : '';
+    
+    // Imagen de fondo o imagen referencial si no hay imagen
+    // Verificar si la URL es base64 o una URL normal
+    const imageUrlRaw = product.imageUrl || '';
+    const hasImage = imageUrlRaw.trim() !== '' && (
+      imageUrlRaw.startsWith('http://') || 
+      imageUrlRaw.startsWith('https://') || 
+      imageUrlRaw.startsWith('data:image')
+    );
+    const imageUrl = hasImage ? imageUrlRaw : getPlaceholderImage(product.name, product.category);
+    
+    // Escapar el nombre del producto para HTML
+    const safeProductName = (product.name || '').replace(/'/g, "\\'").replace(/"/g, '&quot;');
+    
+    const itemHTML = `
+<div class="flex flex-col gap-2 group">
+<div onclick="selectProduct('${safeProductName}'); router.navigate('product');" class="relative w-full aspect-[4/5] bg-center bg-no-repeat bg-cover rounded-xl shadow-sm border border-zinc-100 dark:border-zinc-800 overflow-hidden cursor-pointer hover:scale-[1.02] transition-transform" data-alt="${product.alt || product.name || ''}" style="background-image: url('${imageUrl}'); background-color: #b5352c;">
+<img src="${imageUrl}" alt="${safeProductName}" class="absolute inset-0 w-full h-full object-cover opacity-0" onerror="this.onerror=null; this.style.display='none'; this.parentElement.style.backgroundImage='linear-gradient(135deg, #b5352c 0%, #8b2922 100%)';">
+${badgeHTML}
+</div>
+<div class="flex flex-col flex-1 justify-between pt-1">
+<div>
+<h3 class="text-[#171212] dark:text-white text-sm font-bold leading-tight">${product.name}</h3>
+<p class="text-[#836967] dark:text-zinc-400 text-xs font-medium mt-0.5">${formatPrice(product.price)}</p>
+</div>
+<button onclick="event.stopImmediatePropagation(); addToCartDirect(this, event); return false;" class="mt-2 flex items-center justify-center gap-2 w-full py-2 bg-primary text-white rounded-lg text-xs font-bold transition-transform active:scale-95 shadow-md shadow-primary/20">
+<span class="material-symbols-outlined text-sm">add</span> Agregar
+</button>
+</div>
+</div>
+`;
+    container.innerHTML += itemHTML;
+  });
+  
+  // Actualizar estado de stock después de generar el menú
+  setTimeout(() => {
+    updateMenuStockStatus();
+  }, 300);
+}
+
+// Función para obtener URL de imagen referencial cuando no hay imagen
+function getPlaceholderImage(productName, category) {
+  // Generar un hash simple del nombre del producto para obtener una imagen consistente
+  let hash = 0;
+  const nameStr = (productName || category || 'food').toLowerCase();
+  for (let i = 0; i < nameStr.length; i++) {
+    const char = nameStr.charCodeAt(i);
+    hash = ((hash << 5) - hash) + char;
+    hash = hash & hash;
+  }
+  const seed = Math.abs(hash);
+  
+  // Determinar categoría de imagen según el producto usando Foodish API
+  const name = nameStr;
+  let foodCategory = 'burger'; // Default
+  
+  if (name.includes('burger') || name.includes('hamburguesa')) {
+    foodCategory = 'burger';
+  } else if (name.includes('sushi') || name.includes('roll')) {
+    foodCategory = 'sushi';
+  } else if (name.includes('pizza')) {
+    foodCategory = 'pizza';
+  } else if (name.includes('pasta')) {
+    foodCategory = 'pasta';
+  } else if (name.includes('dosa')) {
+    foodCategory = 'dosa';
+  } else if (name.includes('idly')) {
+    foodCategory = 'idly';
+  } else if (name.includes('vada')) {
+    foodCategory = 'vada';
+  } else if (name.includes('samosa')) {
+    foodCategory = 'samosa';
+  } else if (name.includes('biryani')) {
+    foodCategory = 'biryani';
+  } else if (name.includes('butter') || name.includes('chicken')) {
+    foodCategory = 'butter_chicken';
+  } else {
+    // Si no coincide, usar el seed para variar entre categorías disponibles
+    const categories = ['burger', 'sushi', 'pizza', 'pasta', 'samosa'];
+    foodCategory = categories[seed % categories.length];
+  }
+  
+  // Generar URL de imagen referencial
+  // Usar placeholder.com que siempre funciona como fallback
+  const width = 400;
+  const height = 500;
+  const bgColor = 'b5352c'; // Color primario del sitio
+  const textColor = 'ffffff';
+  const displayName = (productName || 'Producto').substring(0, 20); // Limitar texto
+  
+  // Intentar usar Unsplash primero, pero con fallback a placeholder
+  const searchTerm = encodeURIComponent(foodCategory || 'food');
+  const unsplashUrl = `https://source.unsplash.com/${width}x${height}/?${searchTerm}&sig=${seed}`;
+  
+  // Usar placeholder.com que es más confiable
+  // Esto mostrará al menos un fondo con el nombre del producto
+  const placeholderUrl = `https://via.placeholder.com/${width}x${height}/${bgColor}/${textColor}?text=${encodeURIComponent(displayName)}`;
+  
+  // También intentar con Unsplash para obtener imágenes reales de comida
+  // El navegador intentará cargar la imagen y si falla, usará el onerror del img tag
+  return `https://images.unsplash.com/photo-${1500 + (seed % 1000)}?w=${width}&h=${height}&fit=crop&auto=format&q=80`;
+}
+
+// Función para formatear precios sin símbolo $ y sin decimales innecesarios
+function formatPrice(price) {
+  const numPrice = parseFloat(price) || 0;
+  // Si es un número entero, mostrarlo sin decimales; si tiene decimales, mostrarlos solo si no son .00
+  if (numPrice % 1 === 0) {
+    return numPrice.toString();
+  } else {
+    // Si termina en .00, mostrarlo sin decimales
+    const rounded = Math.round(numPrice * 100) / 100;
+    if (rounded % 1 === 0) {
+      return rounded.toString();
+    }
+    return rounded.toString();
+  }
+}
+
+// Función auxiliar para clases de badge
+function getBadgeClass(badge) {
+  const badgeLower = badge.toLowerCase();
+  if (badgeLower.includes('chef') || badgeLower.includes("pick")) return 'bg-white/90 dark:bg-black/80 text-primary';
+  if (badgeLower.includes('vegetariano') || badgeLower.includes('vegetarian')) return 'bg-[#6B705C]/90 text-white';
+  return 'bg-primary/90 text-white';
+}
+
+function getBadgeTextClass(badge) {
+  const badgeLower = badge.toLowerCase();
+  if (badgeLower.includes('chef') || badgeLower.includes("pick")) return 'text-primary';
+  return 'text-white';
+}
 
 // Función para generar la lista de inventario en el panel admin
 function generateAdminInventory() {
   const inventoryList = document.getElementById('adminInventoryList');
   if (!inventoryList) return;
   
-  // Actualizar contador de items
-  const itemsCountEl = document.getElementById('adminItemsCount');
-  if (itemsCountEl) {
-    itemsCountEl.textContent = `${MENU_ITEMS.length} ITEMS TOTALES`;
-  }
-  
-  // Limpiar contenido existente
-  inventoryList.innerHTML = '';
-  
-  // Cargar stock desde Firebase para cada item
-  let itemsLoaded = 0;
-  const totalItems = MENU_ITEMS.length;
-  
-  MENU_ITEMS.forEach((item, index) => {
-    getItemStockStatus(item.name, (inStock) => {
-      const isChecked = inStock ? 'checked=""' : '';
-      const stockStatus = inStock ? 'En Stock' : 'Agotado';
-      const stockClass = inStock ? 'text-accent-green' : 'text-primary';
-      const toggleBg = inStock ? 'bg-accent-green' : 'bg-primary';
-      const opacityClass = inStock ? '' : 'opacity-60';
-      const contentOpacityClass = inStock ? '' : 'opacity-60';
-      
-      const itemHTML = `
+  // Cargar productos desde Firebase
+  loadProductsFromFirebase((products) => {
+    // Actualizar contador de items
+    const itemsCountEl = document.getElementById('adminItemsCount');
+    if (itemsCountEl) {
+      itemsCountEl.textContent = `${products.length} ITEMS TOTALES`;
+    }
+    
+    // Limpiar contenido existente
+    inventoryList.innerHTML = '';
+    
+    if (products.length === 0) {
+      inventoryList.innerHTML = '<div class="text-center text-gray-400 p-8">No hay productos disponibles. Usa import-excel.html para importar productos.</div>';
+      return;
+    }
+    
+    // Cargar stock desde Firebase para cada item
+    products.forEach((item, index) => {
+      getItemStockStatus(item.name, (inStock) => {
+        const isChecked = inStock ? 'checked=""' : '';
+        const stockStatus = inStock ? 'En Stock' : 'Agotado';
+        const stockClass = inStock ? 'text-accent-green' : 'text-primary';
+        const toggleBg = inStock ? 'bg-accent-green' : 'bg-primary';
+        const opacityClass = inStock ? '' : 'opacity-60';
+        const contentOpacityClass = inStock ? '' : 'opacity-60';
+        
+        // Verificar si el producto está marcado como "Elección del Chef"
+        const isChefChoice = item.isChefChoice === true;
+        const chefChoiceChecked = isChefChoice ? 'checked=""' : '';
+        const chefChoiceBg = isChefChoice ? 'bg-yellow-500' : 'bg-gray-300';
+        
+        const itemHTML = `
 <!-- Item ${index + 1} -->
-<div class="flex items-center gap-4 bg-white dark:bg-gray-900 rounded-xl p-3 shadow-sm border border-gray-100 dark:border-gray-800 ${opacityClass}">
-<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-16 shrink-0" data-alt="${item.alt}" style="background-image: url('${item.imageUrl}');"></div>
+<div class="flex items-center gap-4 bg-white dark:bg-gray-900 rounded-xl p-3 shadow-sm border border-gray-100 dark:border-gray-800 ${opacityClass}" data-product-name="${(item.name || '').replace(/"/g, '&quot;')}">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-16 shrink-0" data-alt="${item.alt || ''}" style="background-image: url('${item.imageUrl || ''}');"></div>
 <div class="flex flex-col flex-1 min-w-0 ${contentOpacityClass}">
 <p class="font-display text-base font-bold truncate">${item.name}</p>
-<p class="text-gray-500 text-sm">$${item.price.toFixed(2)} • ${item.category}</p>
-<p class="${stockClass} text-xs font-bold mt-1 uppercase tracking-tighter">${stockStatus}</p>
+<p class="text-gray-500 text-sm">${formatPrice(item.price)} • ${item.category || 'Sin categoría'}</p>
+<div class="flex items-center gap-2 mt-1">
+<p class="${stockClass} text-xs font-bold uppercase tracking-tighter">${stockStatus}</p>
+${isChefChoice ? '<span class="text-yellow-600 dark:text-yellow-400 text-xs font-bold">⭐ Chef</span>' : ''}
 </div>
-<div class="shrink-0">
-<label class="relative flex h-[34px] w-[60px] cursor-pointer items-center rounded-full p-1 transition-colors duration-300 toggle-label ${toggleBg}">
+</div>
+<div class="flex flex-col gap-2 shrink-0 items-end">
+<label class="relative flex h-[34px] w-[60px] cursor-pointer items-center rounded-full p-1 transition-colors duration-300 toggle-label ${toggleBg}" title="Stock">
 <input ${isChecked} class="invisible absolute toggle-checkbox peer" type="checkbox" onchange="toggleItemStock(this)"/>
 <div class="h-full w-[26px] rounded-full bg-white transition-all peer-checked:translate-x-[26px]" style="box-shadow: 0 2px 4px rgba(0,0,0,0.2);"></div>
+</label>
+<label class="relative flex h-[28px] w-[50px] cursor-pointer items-center rounded-full p-1 transition-colors duration-300 toggle-label ${chefChoiceBg}" title="Elección del Chef">
+<input ${chefChoiceChecked} class="invisible absolute toggle-checkbox peer" type="checkbox" onchange="toggleChefChoice(this)"/>
+<div class="h-full w-[22px] rounded-full bg-white transition-all peer-checked:translate-x-[22px]" style="box-shadow: 0 2px 4px rgba(0,0,0,0.2);"></div>
 </label>
 </div>
 </div>
 `;
-      
-      inventoryList.innerHTML += itemHTML;
-      itemsLoaded++;
+        
+        inventoryList.innerHTML += itemHTML;
+      });
     });
   });
 }
@@ -2621,6 +3045,304 @@ function toggleItemStock(checkbox) {
       updateMenuStockStatus();
     }, 200);
   }
+}
+
+// Función para toggle de "Elección del Chef"
+function toggleChefChoice(checkbox) {
+  const itemContainer = checkbox.closest('.bg-white, .dark\\:bg-gray-900');
+  if (!itemContainer) return;
+  
+  const isChecked = checkbox.checked;
+  const toggleLabel = checkbox.parentElement;
+  
+  // Obtener el nombre del producto desde data attribute o texto
+  const productName = itemContainer.getAttribute('data-product-name') || 
+                      itemContainer.querySelector('.font-display.text-base.font-bold')?.textContent.trim() || '';
+  
+  if (!productName) return;
+  
+  // Actualizar UI del toggle
+  if (isChecked) {
+    toggleLabel.classList.remove('bg-gray-300');
+    toggleLabel.classList.add('bg-yellow-500');
+    // Agregar badge de "Chef" si no existe
+    const statusContainer = itemContainer.querySelector('.flex.items-center.gap-2.mt-1');
+    if (statusContainer && !statusContainer.querySelector('.text-yellow-600')) {
+      const chefBadge = document.createElement('span');
+      chefBadge.className = 'text-yellow-600 dark:text-yellow-400 text-xs font-bold';
+      chefBadge.textContent = '⭐ Chef';
+      statusContainer.appendChild(chefBadge);
+    }
+  } else {
+    toggleLabel.classList.remove('bg-yellow-500');
+    toggleLabel.classList.add('bg-gray-300');
+    // Remover badge de "Chef"
+    const chefBadge = itemContainer.querySelector('.text-yellow-600');
+    if (chefBadge) {
+      chefBadge.remove();
+    }
+  }
+  
+  // Guardar en Firebase
+  saveProductChefChoice(productName, isChecked);
+  
+  // Actualizar "Elección del Chef" en el home
+  setTimeout(() => {
+    loadProductsFromFirebase((products) => {
+      generateChefChoice(products);
+    });
+  }, 200);
+}
+
+// Función para guardar el estado de "Elección del Chef" en Firebase
+function saveProductChefChoice(productName, isChefChoice) {
+  if (!window.firebaseDB || !window.firebaseReady) {
+    console.error('Firebase no está disponible');
+    return;
+  }
+  
+  // Buscar el producto en Firebase y actualizar su campo isChefChoice
+  const productsRef = window.firebaseRef(window.firebaseDB, 'products');
+  
+  window.firebaseGet(productsRef).then((snapshot) => {
+    const productsData = snapshot.val() || {};
+    
+    // Buscar el producto por nombre
+    let productKey = null;
+    for (const key in productsData) {
+      if (productsData[key].name === productName) {
+        productKey = key;
+        break;
+      }
+    }
+    
+    if (productKey) {
+      // Actualizar solo el campo isChefChoice del producto
+      const productRef = window.firebaseRef(window.firebaseDB, `products/${productKey}/isChefChoice`);
+      window.firebaseSet(productRef, isChefChoice).catch((error) => {
+        console.error('Error al guardar isChefChoice en Firebase:', error);
+      });
+    } else {
+      console.warn(`Producto "${productName}" no encontrado en Firebase`);
+    }
+  }).catch((error) => {
+    console.error('Error al leer productos de Firebase:', error);
+  });
+}
+
+// Variable global para el producto seleccionado
+let selectedProductName = null;
+
+// Función para seleccionar un producto antes de navegar
+function selectProduct(productName) {
+  selectedProductName = productName;
+  sessionStorage.setItem('selectedProductName', productName);
+}
+
+// Función para cargar y mostrar los detalles del producto
+function loadProductDetails() {
+  // Obtener el nombre del producto desde sessionStorage o variable global
+  const productName = sessionStorage.getItem('selectedProductName') || selectedProductName;
+  
+  if (!productName) {
+    console.warn('No hay producto seleccionado');
+    // Si no hay producto, volver al menú
+    setTimeout(() => {
+      router.navigate('menu');
+    }, 500);
+    return;
+  }
+  
+  // Limpiar contenido anterior para evitar duplicados
+  const imageEl = document.getElementById('productImage');
+  const nameEl = document.getElementById('productName');
+  const priceEl = document.getElementById('productPrice');
+  const descEl = document.getElementById('productDescription');
+  const badgeEl = document.getElementById('productBadge');
+  const ingredientsContainer = document.getElementById('productIngredientsContainer');
+  
+  // Resetear a estado de carga
+  if (imageEl) {
+    imageEl.style.backgroundImage = '';
+  }
+  if (nameEl) {
+    nameEl.textContent = 'Cargando...';
+  }
+  if (priceEl) {
+    priceEl.textContent = '$0';
+  }
+  if (descEl) {
+    descEl.textContent = 'Cargando descripción...';
+  }
+  if (badgeEl) {
+    badgeEl.classList.add('hidden');
+  }
+  if (ingredientsContainer) {
+    ingredientsContainer.innerHTML = '';
+  }
+  
+  // Cargar productos desde Firebase
+  loadProductsFromFirebase((products) => {
+    // Buscar el producto por nombre
+    const product = products.find(p => p.name === productName);
+    
+    if (!product) {
+      console.warn(`Producto "${productName}" no encontrado`);
+      setTimeout(() => {
+        router.navigate('menu');
+      }, 500);
+      return;
+    }
+    
+    // Actualizar la imagen - evitar duplicados limpiando primero
+    if (imageEl) {
+      const imageUrlRaw = product.imageUrl || '';
+      const hasImage = imageUrlRaw.trim() !== '' && (
+        imageUrlRaw.startsWith('http://') || 
+        imageUrlRaw.startsWith('https://') || 
+        imageUrlRaw.startsWith('data:image')
+      );
+      const imageUrl = hasImage ? imageUrlRaw : getPlaceholderImage(product.name, product.category || '');
+      
+      imageEl.style.backgroundImage = `url('${imageUrl}')`;
+      imageEl.setAttribute('data-alt', product.alt || product.name || '');
+    }
+    
+    // Actualizar nombre
+    if (nameEl) {
+      nameEl.textContent = product.name || 'Producto';
+    }
+    
+    // Actualizar precio
+    if (priceEl) {
+      priceEl.textContent = formatPrice(product.price);
+    }
+    
+    // Actualizar badge (si existe)
+    if (badgeEl) {
+      if (product.badge || product.isChefChoice) {
+        badgeEl.textContent = product.badge || 'Elección del Chef';
+        badgeEl.classList.remove('hidden');
+      } else {
+        badgeEl.classList.add('hidden');
+      }
+    }
+    
+    // Actualizar descripción
+    if (descEl) {
+      // Si hay descripción en el producto, usarla; si no, usar una descripción por defecto
+      if (product.description) {
+        descEl.textContent = product.description;
+      } else if (product.ingredients && product.ingredients.length > 0) {
+        descEl.textContent = `Una deliciosa opción con ${product.ingredients.join(', ').toLowerCase()}.`;
+      } else {
+        descEl.textContent = `Disfruta de nuestro ${product.name}, elaborado con ingredientes frescos y de la más alta calidad.`;
+      }
+    }
+    
+    // Actualizar ingredientes - limpiar contenido anterior primero
+    if (ingredientsContainer) {
+      ingredientsContainer.innerHTML = '';
+      
+      // Si hay ingredientes en el producto, mostrarlos
+      if (product.ingredients && Array.isArray(product.ingredients) && product.ingredients.length > 0) {
+        const sectionHTML = `
+<section>
+<h3 class="text-[#171212] dark:text-white text-lg font-bold pb-3">Ingredientes</h3>
+<div class="grid grid-cols-1 gap-3">
+${product.ingredients.map(ingredient => {
+  // Iconos según tipo de ingrediente
+  let icon = 'nutrition';
+  let iconColor = 'green-600';
+  let bgColor = 'green-100';
+  
+  const ingredientLower = (ingredient || '').toLowerCase();
+  if (ingredientLower.includes('salsa') || ingredientLower.includes('mayo')) {
+    icon = 'liquor';
+    iconColor = 'orange-600';
+    bgColor = 'orange-100';
+  } else if (ingredientLower.includes('picante') || ingredientLower.includes('spicy')) {
+    icon = 'local_fire_department';
+    iconColor = 'red-600';
+    bgColor = 'red-100';
+  } else if (ingredientLower.includes('tempura') || ingredientLower.includes('crunch')) {
+    icon = 'grain';
+    iconColor = 'yellow-600';
+    bgColor = 'yellow-100';
+  }
+  
+  return `
+<div class="flex items-center gap-3 p-4 rounded-xl border border-[#171212]/10 dark:border-white/10 bg-white dark:bg-white/5">
+<div class="w-10 h-10 rounded-lg bg-${bgColor} flex items-center justify-center text-${iconColor}">
+<span class="material-symbols-outlined">${icon}</span>
+</div>
+<div>
+<p class="font-bold text-sm dark:text-white">${ingredient || ''}</p>
+</div>
+</div>`;
+}).join('')}
+</div>
+</section>
+`;
+        ingredientsContainer.innerHTML = sectionHTML;
+      } else {
+        // Si no hay ingredientes específicos, mostrar mensaje
+        ingredientsContainer.innerHTML = `
+<section>
+<h3 class="text-[#171212] dark:text-white text-lg font-bold pb-3">Descripción</h3>
+<p class="text-[#171212]/70 dark:text-white/70 text-base font-normal leading-relaxed">
+Este producto está elaborado con ingredientes frescos y de la más alta calidad.
+</p>
+</section>
+`;
+      }
+      
+      // Agregar botón de "Agregar al carrito" al final
+      const buttonSection = `
+<div class="h-4"></div>
+<section class="sticky bottom-0 bg-background-light dark:bg-background-dark pt-4 pb-6">
+<button onclick="addProductToCartFromDetail()" class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 px-6 rounded-xl shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 flex items-center justify-center gap-3 transition-all active:scale-[0.98] text-base">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+<span>Agregar al Carrito - ${formatPrice(product.price)}</span>
+</button>
+</section>
+`;
+      ingredientsContainer.innerHTML += buttonSection;
+    }
+  });
+}
+
+// Función para agregar producto al carrito desde la página de detalle
+function addProductToCartFromDetail() {
+  const productName = sessionStorage.getItem('selectedProductName') || selectedProductName;
+  
+  if (!productName) {
+    alert('Error: No hay producto seleccionado');
+    return;
+  }
+  
+  loadProductsFromFirebase((products) => {
+    const product = products.find(p => p.name === productName);
+    
+    if (!product) {
+      alert('Error: Producto no encontrado');
+      return;
+    }
+    
+    // Verificar stock antes de agregar
+    getItemStockStatus(productName, (isInStock) => {
+      if (!isInStock) {
+        alert('Este producto está actualmente agotado');
+        return;
+      }
+      
+      // Agregar al carrito usando la función existente
+      addProductToCartInternal(productName, product.price || 0);
+      
+      // Navegar al carrito
+      router.navigate('orders');
+    });
+  });
 }
 </script>
 </body>
