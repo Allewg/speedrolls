@@ -52,6 +52,26 @@
         .toggle-checkbox:not(:checked) + .toggle-label {
             background-color: #b5352c; /* Azuki Red for Off */
         }
+        /* Scrollbar personalizado para salsas seleccionadas */
+        .scrollbar-thin::-webkit-scrollbar {
+            width: 6px;
+        }
+        .scrollbar-thin::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .scrollbar-thin::-webkit-scrollbar-thumb {
+            background-color: #d1d5db;
+            border-radius: 3px;
+        }
+        .dark .scrollbar-thin::-webkit-scrollbar-thumb {
+            background-color: #52525b;
+        }
+        .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+            background-color: #9ca3af;
+        }
+        .dark .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+            background-color: #71717a;
+        }
     </style>
 <style>
     body {
@@ -368,10 +388,6 @@
 <p class="text-[10px] font-bold uppercase tracking-wider">Menú</p>
 </button>
 <button onclick="router.navigate('orders')" class="flex flex-1 flex-col items-center justify-center gap-1 text-zinc-400 dark:text-zinc-500">
-<span class="material-symbols-outlined">favorite</span>
-<p class="text-[10px] font-bold uppercase tracking-wider">Guardados</p>
-</button>
-<button onclick="router.navigate('orders')" class="flex flex-1 flex-col items-center justify-center gap-1 text-zinc-400 dark:text-zinc-500">
 <span class="material-symbols-outlined">shopping_bag</span>
 <p class="text-[10px] font-bold uppercase tracking-wider">Carrito</p>
 </button>
@@ -398,14 +414,14 @@
 <div class="flex flex-col gap-4">
 <!-- El carrito comienza vacío -->
 <!-- Suggestion Card -->
-<div class="mt-4 p-4 rounded-xl border-2 border-dashed border-gray-200 dark:border-zinc-800 flex items-center justify-between">
+<div class="mt-4 p-4 rounded-xl border-2 border-dashed border-red-300 dark:border-red-700 bg-red-500 dark:bg-red-600 flex items-center justify-between">
 <div class="flex items-center gap-3">
-<div class="size-10 rounded-full bg-gray-100 dark:bg-zinc-800 flex items-center justify-center">
-<span class="material-symbols-outlined text-zinc-400">add_shopping_cart</span>
+<div class="size-10 rounded-full bg-red-400 dark:bg-red-700 flex items-center justify-center">
+<span class="material-symbols-outlined text-white">add_shopping_cart</span>
 </div>
-<p class="text-sm font-medium text-zinc-500 dark:text-zinc-400">¿Quieres agregar algo más?</p>
+<p class="text-sm font-medium text-white">¿Quieres agregar algo más?</p>
 </div>
-<button onclick="router.navigate('menu')" class="text-primary text-sm font-bold">Ver Menú</button>
+<button onclick="router.navigate('menu')" class="text-white text-sm font-bold hover:text-red-100">Ver Menú</button>
 </div>
 <!-- Salsas Adicionales Section -->
 <div class="mt-6 p-4 rounded-xl bg-white dark:bg-zinc-900 shadow-sm border border-gray-50 dark:border-zinc-800">
@@ -413,49 +429,8 @@
 <span class="material-symbols-outlined text-primary text-lg">water_drop</span>
 Salsas Adicionales
 </h3>
-<div class="space-y-4">
-<!-- Salsa Soya Extra -->
-<div class="flex items-center justify-between p-3 rounded-lg border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-background-dark">
-<div class="flex items-center gap-3 flex-1">
-<div class="w-10 h-10 rounded-lg bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center">
-<span class="material-symbols-outlined text-amber-600 dark:text-amber-400">water_drop</span>
-</div>
-<div class="flex-1">
-<p class="text-sm font-bold text-[#171212] dark:text-white">Salsa Soya Extra</p>
-<p class="text-xs text-[#836967] dark:text-zinc-400">$500 c/u</p>
-</div>
-</div>
-<div class="flex items-center gap-2">
-<button onclick="updateExtraSauceQuantity('soya', -1, event)" class="flex h-8 w-8 items-center justify-center rounded-lg bg-gray-200 dark:bg-zinc-700 text-[#171212] dark:text-white hover:bg-gray-300 dark:hover:bg-zinc-600 transition-colors">
-<span class="material-symbols-outlined text-sm">remove</span>
-</button>
-<input type="number" id="extraSauceSoyaQty" value="0" min="0" class="w-12 h-8 text-center text-sm font-bold border border-gray-200 dark:border-white/10 rounded-lg bg-white dark:bg-background-dark text-[#171212] dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"/>
-<button onclick="updateExtraSauceQuantity('soya', 1, event)" class="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-white hover:bg-primary/90 transition-colors">
-<span class="material-symbols-outlined text-sm">add</span>
-</button>
-</div>
-</div>
-<!-- Salsa Agridulce Extra -->
-<div class="flex items-center justify-between p-3 rounded-lg border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-background-dark">
-<div class="flex items-center gap-3 flex-1">
-<div class="w-10 h-10 rounded-lg bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center">
-<span class="material-symbols-outlined text-orange-600 dark:text-orange-400">water_drop</span>
-</div>
-<div class="flex-1">
-<p class="text-sm font-bold text-[#171212] dark:text-white">Salsa Agridulce Extra</p>
-<p class="text-xs text-[#836967] dark:text-zinc-400">$500 c/u</p>
-</div>
-</div>
-<div class="flex items-center gap-2">
-<button onclick="updateExtraSauceQuantity('agridulce', -1, event)" class="flex h-8 w-8 items-center justify-center rounded-lg bg-gray-200 dark:bg-zinc-700 text-[#171212] dark:text-white hover:bg-gray-300 dark:hover:bg-zinc-600 transition-colors">
-<span class="material-symbols-outlined text-sm">remove</span>
-</button>
-<input type="number" id="extraSauceAgridulceQty" value="0" min="0" class="w-12 h-8 text-center text-sm font-bold border border-gray-200 dark:border-white/10 rounded-lg bg-white dark:bg-background-dark text-[#171212] dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"/>
-<button onclick="updateExtraSauceQuantity('agridulce', 1, event)" class="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-white hover:bg-primary/90 transition-colors">
-<span class="material-symbols-outlined text-sm">add</span>
-</button>
-</div>
-</div>
+<div id="extraSaucesContainer" class="space-y-4">
+<!-- Las salsas se cargarán dinámicamente desde Firebase -->
 </div>
 </div>
 <!-- Observaciones del Cliente Section -->
@@ -476,19 +451,13 @@ Observaciones del Cliente
 <div class="space-y-3 mb-6 lg:mb-6">
 <div class="flex justify-between items-center">
 <p class="text-[#836967] dark:text-zinc-400 text-sm lg:text-base font-medium leading-normal">Subtotal</p>
-<p class="text-[#171212] dark:text-white text-sm lg:text-base font-bold leading-normal text-right">$0.00</p>
-</div>
-<div class="flex justify-between items-center">
-<p class="text-[#836967] dark:text-zinc-400 text-sm lg:text-base font-medium leading-normal">Envío Estimado</p>
-<div class="flex items-center gap-1">
-<p class="text-[#171212] dark:text-white text-sm lg:text-base font-bold leading-normal text-right">$0.00</p>
-</div>
+<p class="text-[#171212] dark:text-white text-sm lg:text-base font-bold leading-normal text-right">$0</p>
 </div>
 <div class="h-px bg-gray-100 dark:bg-zinc-800 w-full my-1 lg:my-2"></div>
 <!-- DescriptionList: Total -->
 <div class="flex justify-between items-center lg:py-3 lg:px-3 lg:bg-white lg:dark:bg-zinc-900 lg:rounded-xl lg:shadow-sm lg:border lg:border-gray-50 lg:dark:border-zinc-800">
 <p class="text-[#171212] dark:text-white text-lg lg:text-xl font-bold leading-normal">Total</p>
-<p class="text-primary text-2xl lg:text-3xl font-bold leading-normal text-right">$0.00</p>
+<p class="text-primary text-2xl lg:text-3xl font-bold leading-normal text-right">$0</p>
 </div>
 </div>
 <div>
@@ -524,7 +493,7 @@ Observaciones del Cliente
 <!-- Main Form Container -->
 <div class="px-4 lg:px-8 space-y-6 form-section">
 <!-- Contact Information Section -->
-<section class="bg-surface-light dark:bg-surface-dark rounded-xl p-4 shadow-sm border border-gray-100 dark:border-white/5">
+<section class="bg-surface-light dark:bg-surface-dark rounded-xl p-4 shadow-sm border border-gray-100 dark:border-white/5 flex-shrink-0">
 <div class="flex items-center gap-2 mb-4">
 <span class="material-symbols-outlined text-primary text-xl">person</span>
 <h3 class="text-[#171212] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Información de Contacto</h3>
@@ -584,7 +553,7 @@ Observaciones del Cliente
 <span class="material-symbols-outlined text-primary text-sm">water_drop</span>
 Salsas Seleccionadas
 </p>
-<div id="checkoutSaucesSection" class="text-xs text-gray-400 dark:text-gray-500">
+<div id="checkoutSaucesSection" class="text-xs text-gray-400 dark:text-gray-500 max-h-[60px] overflow-y-auto scrollbar-thin">
 <p>No hay salsas seleccionadas</p>
 </div>
 </div>
@@ -592,8 +561,7 @@ Salsas Seleccionadas
 <div>
 <p class="text-xs text-gray-500 dark:text-gray-400 font-medium">Total del Pedido</p>
 <div class="flex items-baseline gap-1">
-<p id="checkoutTotal" class="text-2xl font-bold text-[#171212] dark:text-white">$0.00</p>
-<p class="text-xs text-gray-400 dark:text-gray-500 line-through">$48.00</p>
+<p id="checkoutTotal" class="text-2xl font-bold text-[#171212] dark:text-white">$0</p>
 </div>
 </div>
 </div>
@@ -1109,7 +1077,7 @@ function updateProductPrice() {
   // Actualizar botón
   const priceSpan = document.getElementById('addToCartPrice');
   if (priceSpan) {
-    priceSpan.textContent = `Agregar al Carrito - $${finalPrice.toFixed(2)}`;
+    priceSpan.textContent = `Agregar al Carrito - $${Math.round(finalPrice)}`;
   }
 }
 
@@ -1271,7 +1239,7 @@ function addProductToCartInternal(productName, price) {
       <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-20 shadow-inner bg-gray-200 dark:bg-zinc-800" style="background-image: url('${productImage}'); background-color: #b5352c;"></div>
       <div class="flex flex-col justify-center flex-1">
         <p class="text-[#171212] dark:text-white text-base font-bold leading-tight line-clamp-1">${productName}</p>
-        <p class="text-[#836967] dark:text-zinc-400 text-sm font-medium mt-1">$${price.toFixed(2)}</p>
+        <p class="text-[#836967] dark:text-zinc-400 text-sm font-medium mt-1">$${Math.round(price)}</p>
         <!-- Selector de Salsa Principal para este producto -->
         <select class="product-main-sauce mt-2 w-full rounded-lg border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-background-dark text-[#171212] dark:text-white h-9 px-3 text-xs focus:outline-0 focus:ring-2 focus:ring-primary/50 appearance-none cursor-pointer" style="background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2712%27 height=%2712%27 viewBox=%270 0 12 12%27%3E%3Cpath fill=%27%23333%27 d=%27M6 9L1 4h10L6 9z%27/%3E%3C/svg%3E'); background-repeat: no-repeat; background-position: right 0.5rem center; background-size: 10px; padding-right: 2rem;">
           <option value="">Sin salsa</option>
@@ -1327,29 +1295,27 @@ function updateCartTotals() {
     subtotal += item.subtotal;
   });
   
-  // Agregar costo de salsas adicionales
-  const soyaQty = parseInt(document.getElementById('extraSauceSoyaQty')?.value || '0');
-  const agridulceQty = parseInt(document.getElementById('extraSauceAgridulceQty')?.value || '0');
-  const extraSaucePrice = 500; // Precio por unidad de salsa adicional
-  const extraSaucesTotal = (soyaQty + agridulceQty) * extraSaucePrice;
+  // Agregar costo de salsas adicionales (dinámicas)
+  let extraSaucesTotal = 0;
+  const extraSauceInputs = document.querySelectorAll('input[id^="extraSauce_"]');
+  extraSauceInputs.forEach(input => {
+    const quantity = parseInt(input.value) || 0;
+    const price = parseFloat(input.dataset.saucePrice) || 0;
+    extraSaucesTotal += quantity * price;
+  });
   subtotal += extraSaucesTotal;
   
-  const shipping = subtotal >= extraSaucesTotal && subtotal - extraSaucesTotal > 0 ? 5.00 : 0.00; // Envío gratuito si hay items
-  const total = subtotal + shipping;
+  const total = subtotal;
   
   // Actualizar en el DOM
   const subtotalEl = document.querySelector('#page-orders footer .space-y-3 .flex.justify-between.items-center:first-child p.text-right');
-  const shippingEl = document.querySelector('#page-orders footer .space-y-3 .flex.justify-between.items-center:nth-child(2) p.text-right');
   const totalEl = document.querySelector('#page-orders footer p.text-primary.text-2xl');
   
   if (subtotalEl) {
-    subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
-  }
-  if (shippingEl) {
-    shippingEl.textContent = subtotal > extraSaucesTotal ? `$${shipping.toFixed(2)}` : '$0.00';
+    subtotalEl.textContent = `$${Math.round(subtotal)}`;
   }
   if (totalEl) {
-    totalEl.textContent = `$${total.toFixed(2)}`;
+    totalEl.textContent = `$${Math.round(total)}`;
   }
   
   // Actualizar total en checkout si está visible
@@ -1641,13 +1607,10 @@ function clearCart() {
   const totalEl = document.querySelector('#page-orders footer p.text-primary.text-2xl');
   
   if (subtotalEl) {
-    subtotalEl.textContent = '$0.00';
-  }
-  if (shippingEl) {
-    shippingEl.textContent = '$0.00';
+    subtotalEl.textContent = '$0';
   }
   if (totalEl) {
-    totalEl.textContent = '$0.00';
+    totalEl.textContent = '$0';
   }
   
   // Actualizar badges del carrito
@@ -1655,37 +1618,30 @@ function clearCart() {
 }
 
 // Función para actualizar cantidad de salsa adicional
-function updateExtraSauceQuantity(sauceType, change, event) {
+function updateExtraSauceQuantity(sauceId, change, event) {
   if (event) {
     event.preventDefault();
     event.stopPropagation();
   }
   
-  // Mapear el tipo de salsa al ID correcto
-  const sauceIds = {
-    'soya': 'extraSauceSoyaQty',
-    'agridulce': 'extraSauceAgridulceQty'
-  };
-  const inputId = sauceIds[sauceType];
+  // Construir el ID del input basado en el ID de la salsa
+  const inputId = `extraSauce_${sauceId}`;
+  const input = document.getElementById(inputId);
   
-  if (!inputId) {
-    console.error('Tipo de salsa no válido:', sauceType);
+  if (!input) {
+    console.error('Input de salsa no encontrado:', inputId);
     return;
   }
   
-  const input = document.getElementById(inputId);
+  let currentValue = parseInt(input.value) || 0;
+  currentValue += change;
   
-  if (input) {
-    let currentValue = parseInt(input.value) || 0;
-    currentValue += change;
-    
-    if (currentValue < 0) currentValue = 0;
-    
-    input.value = currentValue;
-    
-    // Actualizar totales del carrito cuando cambia la cantidad de salsa
-    updateCartTotals();
-  }
+  if (currentValue < 0) currentValue = 0;
+  
+  input.value = currentValue;
+  
+  // Actualizar totales del carrito cuando cambia la cantidad de salsa
+  updateCartTotals();
 }
 
 // Función para obtener las salsas seleccionadas del carrito
@@ -1707,26 +1663,27 @@ function getCartSauces() {
     }
   });
   
-  // Obtener cantidades de salsas adicionales
+  // Obtener cantidades de salsas adicionales (dinámicas)
   const extraSauces = [];
-  const soyaQty = parseInt(document.getElementById('extraSauceSoyaQty')?.value || '0');
-  const agridulceQty = parseInt(document.getElementById('extraSauceAgridulceQty')?.value || '0');
-  
-  if (soyaQty > 0) {
-    extraSauces.push({
-      type: 'soya',
-      quantity: soyaQty,
-      price: 500
-    });
-  }
-  
-  if (agridulceQty > 0) {
-    extraSauces.push({
-      type: 'agridulce',
-      quantity: agridulceQty,
-      price: 500
-    });
-  }
+  const extraSauceInputs = document.querySelectorAll('input[id^="extraSauce_"]');
+  extraSauceInputs.forEach(input => {
+    const quantity = parseInt(input.value) || 0;
+    if (quantity > 0) {
+      const sauceId = input.dataset.sauceId || '';
+      const price = parseFloat(input.dataset.saucePrice) || 0;
+      // Obtener el nombre de la salsa desde el DOM
+      const sauceNameEl = input.closest('.flex.items-center.justify-between')?.querySelector('p.text-sm.font-bold');
+      const sauceName = sauceNameEl?.textContent.trim() || sauceId;
+      
+      extraSauces.push({
+        id: sauceId,
+        name: sauceName,
+        type: sauceId, // Mantener compatibilidad con código existente
+        quantity: quantity,
+        price: price
+      });
+    }
+  });
   
   return {
     productMainSauces: productMainSauces,
@@ -1807,7 +1764,7 @@ function generateWhatsAppMessage() {
         message += `   ➜ ${item.extras}\n`;
       }
       
-      message += `   💰 $${item.price.toFixed(2)} c/u = $${item.subtotal.toFixed(2)}\n\n`;
+      message += `   💰 $${Math.round(item.price)} c/u = $${Math.round(item.subtotal)}\n\n`;
     });
   }
   
@@ -1827,13 +1784,9 @@ function generateWhatsAppMessage() {
   // Salsas adicionales con cantidades
   if (checkoutData.sauces && checkoutData.sauces.extraSauces && checkoutData.sauces.extraSauces.length > 0) {
     message += '\n*🧂 SALSAS ADICIONALES:*\n';
-    const sauceNames = {
-      'soya': 'Salsa Soya',
-      'agridulce': 'Salsa Agridulce'
-    };
     
     checkoutData.sauces.extraSauces.forEach(sauce => {
-      const sauceName = sauceNames[sauce.type] || sauce.type;
+      const sauceName = sauce.name || sauce.type || sauce.id;
       const totalPrice = sauce.quantity * sauce.price;
       message += `${sauceName} x${sauce.quantity} = $${totalPrice.toFixed(0)}\n`;
     });
@@ -1847,7 +1800,7 @@ function generateWhatsAppMessage() {
   
   // Resumen de totales
   message += '\n*💰 RESUMEN:*\n';
-  message += `Subtotal: $${cartTotals.subtotal.toFixed(2)}\n`;
+  message += `Subtotal: $${Math.round(cartTotals.subtotal)}\n`;
   
   // Información de entrega
   message += '\n*🚚 ENTREGA:*\n';
@@ -1871,7 +1824,7 @@ function generateWhatsAppMessage() {
   message += `${paymentMethods[checkoutData.paymentMethod] || checkoutData.paymentMethod}\n`;
   
   // Total final
-  message += `\n*✅ TOTAL: $${checkoutData.total.toFixed(2)}*\n\n`;
+  message += `\n*✅ TOTAL: $${Math.round(checkoutData.total)}*\n\n`;
   
   message += '_Gracias por tu pedido_ 🎉';
   
@@ -1933,15 +1886,11 @@ function handlePayment() {
     select.value = '';
   });
   
-  // Limpiar cantidades de salsas adicionales
-  const extraSauceSoyaQty = document.getElementById('extraSauceSoyaQty');
-  const extraSauceAgridulceQty = document.getElementById('extraSauceAgridulceQty');
-  if (extraSauceSoyaQty) {
-    extraSauceSoyaQty.value = '0';
-  }
-  if (extraSauceAgridulceQty) {
-    extraSauceAgridulceQty.value = '0';
-  }
+  // Limpiar cantidades de salsas adicionales (dinámicas)
+  const extraSauceInputs = document.querySelectorAll('input[id^="extraSauce_"]');
+  extraSauceInputs.forEach(input => {
+    input.value = '0';
+  });
   
   // Navegar a la página de confirmación
   setTimeout(() => {
@@ -1981,11 +1930,14 @@ function updateCheckoutTotal(hasDelivery) {
     baseTotal += item.subtotal;
   });
   
-  // Agregar costo de salsas adicionales
-  const soyaQty = parseInt(document.getElementById('extraSauceSoyaQty')?.value || '0');
-  const agridulceQty = parseInt(document.getElementById('extraSauceAgridulceQty')?.value || '0');
-  const extraSaucePrice = 500; // Precio por unidad de salsa adicional
-  const extraSaucesTotal = (soyaQty + agridulceQty) * extraSaucePrice;
+  // Agregar costo de salsas adicionales (dinámicas)
+  let extraSaucesTotal = 0;
+  const extraSauceInputs = document.querySelectorAll('input[id^="extraSauce_"]');
+  extraSauceInputs.forEach(input => {
+    const quantity = parseInt(input.value) || 0;
+    const price = parseFloat(input.dataset.saucePrice) || 0;
+    extraSaucesTotal += quantity * price;
+  });
   baseTotal += extraSaucesTotal;
   
   const deliveryCost = 3000;
@@ -1994,11 +1946,11 @@ function updateCheckoutTotal(hasDelivery) {
   if (hasDelivery) {
     const newTotal = baseTotal + deliveryCost;
     if (totalElement) {
-      totalElement.textContent = `$${newTotal.toLocaleString('es-CL', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+      totalElement.textContent = `$${Math.round(newTotal)}`;
     }
   } else {
     if (totalElement) {
-      totalElement.textContent = `$${baseTotal.toFixed(2)}`;
+      totalElement.textContent = `$${Math.round(baseTotal)}`;
     }
   }
 }
@@ -2028,16 +1980,12 @@ function updateCheckoutSauces() {
     html += '</div>';
   }
   
-  // Mostrar salsas adicionales con cantidades y precios
+  // Mostrar salsas adicionales con cantidades y precios (dinámicas)
   if (sauces.extraSauces && sauces.extraSauces.length > 0) {
     html += '<div>';
     html += '<p class="text-xs font-medium text-[#836967] dark:text-zinc-400 mb-2">Salsas Adicionales:</p>';
-    const sauceNames = {
-      'soya': 'Salsa Soya',
-      'agridulce': 'Salsa Agridulce'
-    };
     sauces.extraSauces.forEach(sauce => {
-      const sauceName = sauceNames[sauce.type] || sauce.type;
+      const sauceName = sauce.name || sauce.type || sauce.id;
       const totalPrice = sauce.quantity * sauce.price;
       html += `<div class="flex items-center justify-between text-sm mb-1">
         <span class="text-[#171212] dark:text-white">${sauceName} x${sauce.quantity}</span>
@@ -2170,6 +2118,7 @@ document.addEventListener('DOMContentLoaded', () => {
         generateHomeCategories(products);
         generateChefChoice(products);
         updatePromoHeroSlide(products);
+        generateExtraSauces(products);
         
         // Configurar listener en tiempo real para productos
         listenToProductsChanges((products) => {
@@ -2178,6 +2127,7 @@ document.addEventListener('DOMContentLoaded', () => {
           generateHomeCategories(products);
           generateChefChoice(products);
           updatePromoHeroSlide(products);
+          generateExtraSauces(products);
         });
       });
       
@@ -2201,6 +2151,7 @@ document.addEventListener('DOMContentLoaded', () => {
           generateHomeCategories(products);
           generateChefChoice(products);
           updatePromoHeroSlide(products);
+          generateExtraSauces(products);
           if (router.currentPage === 'menu') {
             updateMenuStockStatus();
           }
@@ -2466,13 +2417,131 @@ function filterByCategory(category) {
   generateMenuHTML(MENU_ITEMS);
 }
 
+// Función para generar las salsas adicionales dinámicamente desde Firebase
+function generateExtraSauces(products) {
+  const container = document.getElementById('extraSaucesContainer');
+  if (!container) return;
+  
+  // Filtrar productos de la categoría "Salsas" (case-insensitive)
+  const sauces = products.filter(p => {
+    const category = (p.category || '').toLowerCase().trim();
+    return category === 'salsas' || category === 'salsa';
+  });
+  
+  // Si no hay salsas, mostrar mensaje o dejar vacío
+  if (sauces.length === 0) {
+    container.innerHTML = '<p class="text-xs text-gray-400 dark:text-gray-500 text-center py-4">No hay salsas disponibles</p>';
+    return;
+  }
+  
+  container.innerHTML = '';
+  
+  // Colores para los iconos (rotar entre diferentes colores)
+  const colors = [
+    { bg: 'bg-amber-100', darkBg: 'dark:bg-amber-900/30', icon: 'text-amber-600', darkIcon: 'dark:text-amber-400' },
+    { bg: 'bg-orange-100', darkBg: 'dark:bg-orange-900/30', icon: 'text-orange-600', darkIcon: 'dark:text-orange-400' },
+    { bg: 'bg-red-100', darkBg: 'dark:bg-red-900/30', icon: 'text-red-600', darkIcon: 'dark:text-red-400' },
+    { bg: 'bg-pink-100', darkBg: 'dark:bg-pink-900/30', icon: 'text-pink-600', darkIcon: 'dark:text-pink-400' },
+    { bg: 'bg-purple-100', darkBg: 'dark:bg-purple-900/30', icon: 'text-purple-600', darkIcon: 'dark:text-purple-400' }
+  ];
+  
+  sauces.forEach((sauce, index) => {
+    const sauceId = sauce.id || sauce.name?.toLowerCase().replace(/\s+/g, '') || `sauce-${index}`;
+    const saucePrice = sauce.price || 0;
+    const sauceName = sauce.name || 'Salsa';
+    const colorScheme = colors[index % colors.length];
+    
+    // Crear ID único para el input basado en el ID del producto
+    const inputId = `extraSauce_${sauceId}`;
+    
+    const sauceHTML = `
+<div class="flex items-center justify-between p-3 rounded-lg border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-background-dark">
+<div class="flex items-center gap-3 flex-1">
+<div class="w-10 h-10 rounded-lg ${colorScheme.bg} ${colorScheme.darkBg} flex items-center justify-center">
+<span class="material-symbols-outlined ${colorScheme.icon} ${colorScheme.darkIcon}">water_drop</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold text-[#171212] dark:text-white">${sauceName}</p>
+<p class="text-xs text-[#836967] dark:text-zinc-400">$${saucePrice.toFixed(0)} c/u</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button onclick="updateExtraSauceQuantity('${sauceId}', -1, event)" class="flex h-8 w-8 items-center justify-center rounded-lg bg-gray-200 dark:bg-zinc-700 text-[#171212] dark:text-white hover:bg-gray-300 dark:hover:bg-zinc-600 transition-colors">
+<span class="material-symbols-outlined text-sm">remove</span>
+</button>
+<input type="number" id="${inputId}" value="0" min="0" data-sauce-id="${sauceId}" data-sauce-price="${saucePrice}" class="w-12 h-8 text-center text-sm font-bold border border-gray-200 dark:border-white/10 rounded-lg bg-white dark:bg-background-dark text-[#171212] dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"/>
+<button onclick="updateExtraSauceQuantity('${sauceId}', 1, event)" class="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-white hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+</div>
+`;
+    
+    container.innerHTML += sauceHTML;
+  });
+}
+
 // Función para generar las categorías del home con imágenes reales de productos
 function generateHomeCategories(products) {
   const container = document.getElementById('homeCategoriesContainer');
   if (!container) return;
   
   // Obtener categorías únicas (excluir 'Sin categoría')
-  const categories = [...new Set(products.map(p => p.category).filter(c => c && c !== 'Sin categoría'))];
+  let categories = [...new Set(products.map(p => p.category).filter(c => c && c !== 'Sin categoría'))];
+  
+  // Ordenar categorías según el orden especificado (mismo orden que en el menú)
+  const categoryOrder = [
+    'sushi burger',
+    'gohan',
+    'sushipleto',
+    'fries',
+    'bebestibles',
+    'promociones',
+    'salsas'
+  ];
+  
+  // Función para normalizar una categoría (minúsculas, sin espacios, sin acentos)
+  const normalizeCategory = (category) => {
+    if (!category) return '';
+    return category
+      .toLowerCase()
+      .trim()
+      .replace(/\s+/g, '') // Eliminar todos los espacios
+      .normalize('NFD') // Normalizar caracteres Unicode (separar acentos)
+      .replace(/[\u0300-\u036f]/g, ''); // Eliminar diacríticos (acentos)
+  };
+  
+  // Función para obtener el índice de orden de una categoría
+  const getCategoryOrder = (category) => {
+    if (!category) return 999;
+    
+    const normalizedCategory = normalizeCategory(category);
+    
+    // Buscar coincidencia exacta primero (más preciso)
+    let index = categoryOrder.findIndex(cat => {
+      const catNormalized = normalizeCategory(cat);
+      return normalizedCategory === catNormalized;
+    });
+    
+    // Si no hay coincidencia exacta, buscar coincidencia parcial (que contenga la palabra clave)
+    if (index === -1) {
+      index = categoryOrder.findIndex(cat => {
+        const catNormalized = normalizeCategory(cat);
+        // Coincidencia si la categoría normalizada contiene la palabra clave o viceversa
+        return normalizedCategory.includes(catNormalized) || catNormalized.includes(normalizedCategory);
+      });
+    }
+    
+    // Si no se encuentra, asignar un índice alto para que aparezca al final
+    return index === -1 ? 999 : index;
+  };
+  
+  // Ordenar categorías según categoryOrder
+  categories = categories.sort((a, b) => {
+    const orderA = getCategoryOrder(a);
+    const orderB = getCategoryOrder(b);
+    return orderA - orderB;
+  });
   
   container.innerHTML = '';
   
