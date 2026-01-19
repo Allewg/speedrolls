@@ -236,23 +236,23 @@ function generateExtraSauces(products) {
     const inputId = `extraSauce_${sauceId}`;
     
     const sauceHTML = `
-<div class="flex items-center justify-between p-3 rounded-lg border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-background-dark">
-<div class="flex items-center gap-3 flex-1">
-<div class="w-10 h-10 rounded-lg ${colorScheme.bg} ${colorScheme.darkBg} flex items-center justify-center">
-<span class="material-symbols-outlined ${colorScheme.icon} ${colorScheme.darkIcon}">water_drop</span>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 p-2 rounded-md border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-background-dark hover:bg-gray-100 dark:hover:bg-zinc-800/50 transition-colors">
+<div class="flex items-center gap-2 flex-1 min-w-0">
+<div class="w-7 h-7 rounded-md ${colorScheme.bg} ${colorScheme.darkBg} flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined ${colorScheme.icon} ${colorScheme.darkIcon} text-sm">water_drop</span>
 </div>
-<div class="flex-1">
-<p class="text-sm font-bold text-[#171212] dark:text-white">${sauceName}</p>
-<p class="text-xs text-[#836967] dark:text-zinc-400">$${saucePrice.toFixed(0)} c/u</p>
+<div class="flex-1 min-w-0">
+<p class="text-xs font-semibold text-[#171212] dark:text-white truncate">${sauceName}</p>
+<p class="text-[10px] text-[#836967] dark:text-zinc-400">$${saucePrice.toFixed(0)} c/u</p>
 </div>
 </div>
-<div class="flex items-center gap-2">
-<button onclick="updateExtraSauceQuantity('${sauceId}', -1, event)" class="flex h-8 w-8 items-center justify-center rounded-lg bg-gray-200 dark:bg-zinc-700 text-[#171212] dark:text-white hover:bg-gray-300 dark:hover:bg-zinc-600 transition-colors">
-<span class="material-symbols-outlined text-sm">remove</span>
+<div class="flex items-center gap-1.5 flex-shrink-0">
+<button onclick="updateExtraSauceQuantity('${sauceId}', -1, event)" class="flex h-7 w-7 items-center justify-center rounded-md bg-gray-200 dark:bg-zinc-700 text-[#171212] dark:text-white hover:bg-gray-300 dark:hover:bg-zinc-600 active:scale-95 transition-all touch-manipulation" aria-label="Reducir cantidad">
+<span class="material-symbols-outlined text-xs">remove</span>
 </button>
-<input type="number" id="${inputId}" value="0" min="0" data-sauce-id="${sauceId}" data-sauce-price="${saucePrice}" class="w-12 h-8 text-center text-sm font-bold border border-gray-200 dark:border-white/10 rounded-lg bg-white dark:bg-background-dark text-[#171212] dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"/>
-<button onclick="updateExtraSauceQuantity('${sauceId}', 1, event)" class="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-white hover:bg-primary/90 transition-colors">
-<span class="material-symbols-outlined text-sm">add</span>
+<input type="number" id="${inputId}" value="0" min="0" data-sauce-id="${sauceId}" data-sauce-price="${saucePrice}" class="w-10 h-7 text-center text-xs font-semibold border border-gray-200 dark:border-white/10 rounded-md bg-white dark:bg-background-dark text-[#171212] dark:text-white focus:outline-0 focus:ring-1 focus:ring-primary/50 [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"/>
+<button onclick="updateExtraSauceQuantity('${sauceId}', 1, event)" class="flex h-7 w-7 items-center justify-center rounded-md bg-primary text-white hover:bg-primary/90 active:scale-95 transition-all touch-manipulation" aria-label="Aumentar cantidad">
+<span class="material-symbols-outlined text-xs">add</span>
 </button>
 </div>
 </div>

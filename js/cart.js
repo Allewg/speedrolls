@@ -516,30 +516,44 @@ function clearCart() {
   updateCartBadges();
 }
 
-// Función para actualizar cantidad de salsa adicional
+// Función para actualizar cantidad de salsa adicional (mantener compatibilidad con botones)
 function updateExtraSauceQuantity(sauceId, change, event) {
   if (event) {
     event.preventDefault();
     event.stopPropagation();
   }
   
-  // Construir el ID del input basado en el ID de la salsa
-  const inputId = `extraSauce_${sauceId}`;
-  const input = document.getElementById(inputId);
+  // Construir el ID del input/select basado en el ID de la salsa
+  const elementId = `extraSauce_${sauceId}`;
+  const element = document.getElementById(elementId);
   
-  if (!input) {
-    console.error('Input de salsa no encontrado:', inputId);
+  if (!element) {
+    console.error('Elemento de salsa no encontrado:', elementId);
     return;
   }
   
-  let currentValue = parseInt(input.value) || 0;
-  currentValue += change;
-  
-  if (currentValue < 0) currentValue = 0;
-  
-  input.value = currentValue;
+  // Si es un select, actualizar su valor
+  if (element.tagName === 'SELECT') {
+    let currentValue = parseInt(element.value) || 0;
+    currentValue += change;
+    if (currentValue < 0) currentValue = 0;
+    if (currentValue > 10) currentValue = 10; // Limitar a 10
+    element.value = currentValue;
+  } else {
+    // Si es un input (compatibilidad con código antiguo)
+    let currentValue = parseInt(element.value) || 0;
+    currentValue += change;
+    if (currentValue < 0) currentValue = 0;
+    element.value = currentValue;
+  }
   
   // Actualizar totales del carrito cuando cambia la cantidad de salsa
+  updateCartTotals();
+}
+
+// Función para actualizar cantidad de salsa adicional desde un select
+function updateExtraSauceQuantityFromSelect(sauceId, value) {
+  // El valor ya viene del select, solo actualizar totales
   updateCartTotals();
 }
 
@@ -562,17 +576,22 @@ function getCartSauces() {
     }
   });
   
-  // Obtener cantidades de salsas adicionales (dinámicas)
+  // Obtener cantidades de salsas adicionales (dinámicas) - soporta inputs y selects
   const extraSauces = [];
-  const extraSauceInputs = document.querySelectorAll('input[id^="extraSauce_"]');
-  extraSauceInputs.forEach(input => {
-    const quantity = parseInt(input.value) || 0;
+  // Buscar tanto inputs como selects que empiecen con "extraSauce_"
+  const extraSauceInputs = document.querySelectorAll('input[id^="extraSauce_"], select[id^="extraSauce_"]');
+  extraSauceInputs.forEach(element => {
+    const quantity = parseInt(element.value) || 0;
     if (quantity > 0) {
-      const sauceId = input.dataset.sauceId || '';
-      const price = parseFloat(input.dataset.saucePrice) || 0;
-      // Obtener el nombre de la salsa desde el DOM
-      const sauceNameEl = input.closest('.flex.items-center.justify-between')?.querySelector('p.text-sm.font-bold');
-      const sauceName = sauceNameEl?.textContent.trim() || sauceId;
+      const sauceId = element.dataset.sauceId || '';
+      const price = parseFloat(element.dataset.saucePrice) || 0;
+      // Obtener el nombre de la salsa desde el dataset o desde el DOM
+      let sauceName = element.dataset.sauceName || '';
+      if (!sauceName) {
+        // Intentar obtener desde el DOM (compatibilidad con código antiguo)
+        const sauceNameEl = element.closest('.flex.items-center')?.querySelector('p.text-sm.font-bold');
+        sauceName = sauceNameEl?.textContent.trim() || sauceId;
+      }
       
       extraSauces.push({
         id: sauceId,

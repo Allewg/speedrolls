@@ -55,6 +55,43 @@ body {
   display: block;
 }
 
+/* Estilos para salsas adicionales - diseño compacto y responsivo */
+#extraSaucesContainer {
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 0.25rem;
+}
+
+#extraSaucesContainer::-webkit-scrollbar {
+  width: 4px;
+}
+
+#extraSaucesContainer::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#extraSaucesContainer::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+}
+
+.dark #extraSaucesContainer::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Mejoras táctiles para botones en móviles */
+@media (max-width: 640px) {
+  #extraSaucesContainer button {
+    min-height: 36px;
+    min-width: 36px;
+  }
+  
+  #extraSaucesContainer input[type="number"] {
+    min-height: 36px;
+    font-size: 0.875rem;
+  }
+}
+
 /* Responsive: Desktop adaptations */
 @media (min-width: 1024px) {
   body {
