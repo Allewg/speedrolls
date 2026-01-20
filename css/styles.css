@@ -55,6 +55,19 @@ body {
   display: block;
 }
 
+/* Ajustes responsivos para formularios de checkout */
+@media (max-width: 640px) {
+  #page-checkout .form-section {
+    padding-top: 0.5rem;
+  }
+  
+  #page-checkout select#paymentMethod {
+    background-position: right 0.75rem center !important;
+    background-size: 10px !important;
+    padding-right: 2rem !important;
+  }
+}
+
 /* Estilos para salsas adicionales - diseño compacto y responsivo */
 #extraSaucesContainer {
   max-height: 400px;

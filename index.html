@@ -236,7 +236,7 @@
 </button>
 <h2 class="text-[#171212] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-10">Tu Carrito</h2>
 </header>
-<main class="flex-1 px-4 pt-4 pb-40">
+<main class="flex-1 px-4 pt-4 pb-52 lg:pb-40">
 <!-- Promo Banner -->
 <div class="mb-6 p-4 rounded-xl bg-primary/5 dark:bg-primary/10 border border-primary/20 flex items-center gap-3">
 <span class="material-symbols-outlined text-primary">lightbulb</span>
@@ -266,14 +266,14 @@ Salsas Adicionales
 </div>
 </div>
 <!-- Observaciones del Cliente Section -->
-<div class="mt-6 p-4 rounded-xl bg-white dark:bg-zinc-900 shadow-sm border border-gray-50 dark:border-zinc-800">
+<div class="mt-6 mb-6 p-4 rounded-xl bg-white dark:bg-zinc-900 shadow-sm border border-gray-50 dark:border-zinc-800">
 <h3 class="text-[#171212] dark:text-white text-base font-bold mb-4 flex items-center gap-2">
 <span class="material-symbols-outlined text-primary text-lg">note</span>
 Observaciones del Cliente
 </h3>
 <div class="flex flex-col w-full">
 <p class="text-[#171212] dark:text-gray-300 text-sm font-medium leading-normal pb-1.5 px-1 mb-2">Agrega instrucciones especiales o comentarios sobre tu pedido</p>
-<textarea id="customerObservations" rows="3" class="form-input flex w-full rounded-lg text-[#171212] dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-background-dark h-24 placeholder:text-gray-400 dark:placeholder:text-gray-500 p-[15px] text-base font-normal resize-none" placeholder="Ej: Sin cebolla, sin picante, entrega urgente, etc."></textarea>
+<textarea id="customerObservations" rows="3" class="form-input flex w-full rounded-lg text-[#171212] dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-background-dark h-24 placeholder:text-gray-400 dark:placeholder:text-gray-500 px-[15px] pt-[15px] pb-[20px] text-base font-normal resize-none" placeholder="Ej: Sin cebolla, sin picante, entrega urgente, etc."></textarea>
 </div>
 </div>
 </main>
@@ -309,44 +309,44 @@ Observaciones del Cliente
 <div class="max-w-[480px] lg:max-w-[900px] mobile-container mx-auto min-h-screen flex flex-col relative pb-32 lg:pb-8 shadow-2xl">
 <!-- TopAppBar -->
 <div class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
-<div class="flex items-center p-4 justify-between">
-<button onclick="router.navigate('orders')" class="text-[#171212] dark:text-white flex size-12 shrink-0 items-center justify-center hover:bg-gray-100 dark:hover:bg-white/10 rounded-full transition-colors">
-<span class="material-symbols-outlined">arrow_back_ios_new</span>
+<div class="flex items-center p-3 lg:p-4 justify-between">
+<button onclick="router.navigate('orders')" class="text-[#171212] dark:text-white flex size-10 lg:size-12 shrink-0 items-center justify-center hover:bg-gray-100 dark:hover:bg-white/10 rounded-full transition-colors">
+<span class="material-symbols-outlined text-lg lg:text-xl">arrow_back_ios_new</span>
 </button>
-<h2 class="text-[#171212] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12">Pago</h2>
+<h2 class="text-[#171212] dark:text-white text-base lg:text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-10 lg:pr-12">Pago</h2>
 </div>
 <!-- PageIndicators (Progress) -->
-<div class="flex w-full flex-row items-center justify-center gap-3 py-2">
-<div class="h-1.5 w-8 rounded-full bg-primary"></div>
-<div class="h-1.5 w-8 rounded-full bg-primary/20 dark:bg-primary/10"></div>
-<div class="h-1.5 w-8 rounded-full bg-primary/20 dark:bg-primary/10"></div>
+<div class="flex w-full flex-row items-center justify-center gap-2 lg:gap-3 py-1.5 lg:py-2">
+<div class="h-1 lg:h-1.5 w-6 lg:w-8 rounded-full bg-primary"></div>
+<div class="h-1 lg:h-1.5 w-6 lg:w-8 rounded-full bg-primary/20 dark:bg-primary/10"></div>
+<div class="h-1 lg:h-1.5 w-6 lg:w-8 rounded-full bg-primary/20 dark:bg-primary/10"></div>
 </div>
 </div>
 <!-- Main Form Container -->
-<div class="px-4 lg:px-8 space-y-6 form-section">
+<div class="px-3 lg:px-8 space-y-3 lg:space-y-6 form-section">
 <!-- Contact Information Section -->
-<section class="bg-surface-light dark:bg-surface-dark rounded-xl p-4 shadow-sm border border-gray-100 dark:border-white/5 flex-shrink-0">
-<div class="flex items-center gap-2 mb-4">
-<span class="material-symbols-outlined text-primary text-xl">person</span>
-<h3 class="text-[#171212] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Información de Contacto</h3>
+<section class="bg-surface-light dark:bg-surface-dark rounded-lg lg:rounded-xl p-3 lg:p-4 shadow-sm border border-gray-100 dark:border-white/5 flex-shrink-0">
+<div class="flex items-center gap-1.5 lg:gap-2 mb-2 lg:mb-4">
+<span class="material-symbols-outlined text-primary text-lg lg:text-xl">person</span>
+<h3 class="text-[#171212] dark:text-white text-base lg:text-lg font-bold leading-tight tracking-[-0.015em]">Información de Contacto</h3>
 </div>
-<div class="space-y-4">
+<div class="space-y-3 lg:space-y-4">
 <!-- TextField: Full Name -->
 <div class="flex flex-col w-full">
-<p class="text-[#171212] dark:text-gray-300 text-sm font-medium leading-normal pb-1.5 px-1">Nombre Completo</p>
-<input id="fullName" class="form-input flex w-full rounded-lg text-[#171212] dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-background-dark h-14 placeholder:text-gray-400 dark:placeholder:text-gray-500 p-[15px] text-base font-normal" placeholder="Juan Pérez" value=""/>
+<p class="text-[#171212] dark:text-gray-300 text-xs lg:text-sm font-medium leading-normal pb-1 px-1 lg:pb-1.5">Nombre Completo</p>
+<input id="fullName" class="form-input flex w-full rounded-lg text-[#171212] dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-background-dark h-11 lg:h-14 placeholder:text-gray-400 dark:placeholder:text-gray-500 px-3 py-2 lg:p-[15px] text-sm lg:text-base font-normal" placeholder="Juan Pérez" value=""/>
 </div>
 </div>
 </section>
 <!-- Medio de Pago Section -->
-<section class="bg-surface-light dark:bg-surface-dark rounded-xl p-4 shadow-sm border border-gray-100 dark:border-white/5">
-<div class="flex items-center gap-2 mb-4">
-<span class="material-symbols-outlined text-primary text-xl">payments</span>
-<h3 class="text-[#171212] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Medio de Pago</h3>
+<section class="bg-surface-light dark:bg-surface-dark rounded-lg lg:rounded-xl p-3 lg:p-4 shadow-sm border border-gray-100 dark:border-white/5">
+<div class="flex items-center gap-1.5 lg:gap-2 mb-2 lg:mb-4">
+<span class="material-symbols-outlined text-primary text-lg lg:text-xl">payments</span>
+<h3 class="text-[#171212] dark:text-white text-base lg:text-lg font-bold leading-tight tracking-[-0.015em]">Medio de Pago</h3>
 </div>
 <div class="flex flex-col w-full">
-<p class="text-[#171212] dark:text-gray-300 text-sm font-medium leading-normal pb-1.5 px-1 mb-2">Selecciona el medio de pago</p>
-<select id="paymentMethod" class="form-input flex w-full rounded-lg text-[#171212] dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-background-dark h-14 px-[15px] text-base font-normal appearance-none cursor-pointer" style="background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2712%27 height=%2712%27 viewBox=%270 0 12 12%27%3E%3Cpath fill=%27%23333%27 d=%27M6 9L1 4h10L6 9z%27/%3E%3C/svg%3E'); background-repeat: no-repeat; background-position: right 1rem center; background-size: 12px; padding-right: 2.5rem;">
+<p class="text-[#171212] dark:text-gray-300 text-xs lg:text-sm font-medium leading-normal pb-1 px-1 lg:pb-1.5 mb-1.5 lg:mb-2">Selecciona el medio de pago</p>
+<select id="paymentMethod" class="form-input flex w-full rounded-lg text-[#171212] dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-background-dark h-11 lg:h-14 px-3 lg:px-[15px] text-sm lg:text-base font-normal appearance-none cursor-pointer" style="background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2712%27 height=%2712%27 viewBox=%270 0 12 12%27%3E%3Cpath fill=%27%23333%27 d=%27M6 9L1 4h10L6 9z%27/%3E%3C/svg%3E'); background-repeat: no-repeat; background-position: right 0.75rem center; background-size: 10px; padding-right: 2rem;">
 <option value="efectivo">Efectivo</option>
 <option value="tarjeta">Tarjeta</option>
 <option value="transferencia">Transferencia</option>
@@ -354,25 +354,25 @@ Observaciones del Cliente
 </div>
 </section>
 <!-- Retiro o Despacho Section -->
-<section class="bg-surface-light dark:bg-surface-dark rounded-xl p-4 shadow-sm border border-gray-100 dark:border-white/5">
-<div class="flex items-center gap-2 mb-4">
-<span class="material-symbols-outlined text-primary text-xl">local_shipping</span>
-<h3 class="text-[#171212] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Retiro o Despacho</h3>
+<section class="bg-surface-light dark:bg-surface-dark rounded-lg lg:rounded-xl p-3 lg:p-4 shadow-sm border border-gray-100 dark:border-white/5">
+<div class="flex items-center gap-1.5 lg:gap-2 mb-2 lg:mb-4">
+<span class="material-symbols-outlined text-primary text-lg lg:text-xl">local_shipping</span>
+<h3 class="text-[#171212] dark:text-white text-base lg:text-lg font-bold leading-tight tracking-[-0.015em]">Retiro o Despacho</h3>
 </div>
 <!-- Custom Segmented Control -->
-<div class="flex p-1 bg-gray-100 dark:bg-background-dark rounded-lg mb-4">
-<button onclick="toggleDeliveryOption('retiro')" id="btnRetiro" class="flex-1 py-2 px-3 bg-white dark:bg-surface-dark rounded-md shadow-sm text-sm font-bold text-primary">Retiro en Local</button>
-<button onclick="toggleDeliveryOption('despacho')" id="btnDespacho" class="flex-1 py-2 px-3 rounded-md text-sm font-medium text-gray-500 dark:text-gray-400">Despacho</button>
+<div class="flex p-0.5 lg:p-1 bg-gray-100 dark:bg-background-dark rounded-md lg:rounded-lg mb-2 lg:mb-4">
+<button onclick="toggleDeliveryOption('retiro')" id="btnRetiro" class="flex-1 py-1.5 lg:py-2 px-2 lg:px-3 bg-white dark:bg-surface-dark rounded-md shadow-sm text-xs lg:text-sm font-bold text-primary">Retiro en Local</button>
+<button onclick="toggleDeliveryOption('despacho')" id="btnDespacho" class="flex-1 py-1.5 lg:py-2 px-2 lg:px-3 rounded-md text-xs lg:text-sm font-medium text-gray-500 dark:text-gray-400">Despacho</button>
 </div>
 <!-- Address Field (only shown when despacho is selected) -->
 <div id="deliveryAddressSection" class="hidden">
-<div class="flex flex-col w-full mb-6">
-<p class="text-[#171212] dark:text-gray-300 text-sm font-medium leading-normal pb-1.5 px-1">Dirección de Despacho</p>
-<textarea id="deliveryAddress" class="form-input flex w-full rounded-lg text-[#171212] dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-background-dark h-20 placeholder:text-gray-400 dark:placeholder:text-gray-500 px-[15px] pt-[15px] pb-[20px] text-base font-normal resize-none" placeholder="Ingresa tu dirección completa..." rows="3"></textarea>
+<div class="flex flex-col w-full mb-3 lg:mb-6">
+<p class="text-[#171212] dark:text-gray-300 text-xs lg:text-sm font-medium leading-normal pb-1 px-1 lg:pb-1.5">Dirección de Despacho</p>
+<textarea id="deliveryAddress" class="form-input flex w-full rounded-lg text-[#171212] dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-background-dark h-16 lg:h-20 placeholder:text-gray-400 dark:placeholder:text-gray-500 px-3 pt-2 pb-3 lg:px-[15px] lg:pt-[15px] lg:pb-[20px] text-sm lg:text-base font-normal resize-none" placeholder="Ingresa tu dirección completa..." rows="3"></textarea>
 </div>
-<div class="flex items-center justify-between p-3 bg-primary/5 dark:bg-primary/10 rounded-lg border border-primary/20">
-<span class="text-sm font-medium text-[#171212] dark:text-white">Costo de Despacho</span>
-<span class="text-lg font-bold text-primary">$3.000</span>
+<div class="flex items-center justify-between p-2 lg:p-3 bg-primary/5 dark:bg-primary/10 rounded-md lg:rounded-lg border border-primary/20">
+<span class="text-xs lg:text-sm font-medium text-[#171212] dark:text-white">Costo de Despacho</span>
+<span class="text-base lg:text-lg font-bold text-primary">$3.000</span>
 </div>
 </div>
 </section>
